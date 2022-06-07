@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/review"
+        android:icon="@drawable/list"
+        android:title="리뷰"/>
+    <item android:id="@+id/market"
+        android:icon="@drawable/market_icon"
+        android:title="마켓"/>
+    <item android:id="@+id/settings"
+        android:icon="@drawable/nickname"
+        android:title="설정"/>
+
+
+</menu>
