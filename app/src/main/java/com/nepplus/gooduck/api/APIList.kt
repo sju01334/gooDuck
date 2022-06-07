@@ -53,5 +53,9 @@ interface APIList {
         @Field("nick_name") nickname : String
     ) : Call<BasicResponse>
 
+    //  main
+    @GET("/main/banner")
+    fun getRequestBanner() : Call<BasicResponse>
+
 
 }

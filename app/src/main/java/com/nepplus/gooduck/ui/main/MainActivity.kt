@@ -5,11 +5,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
+import com.nepplus.gooduck.adapters.MainViewPagerAdapter
 import com.nepplus.gooduck.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
 
     lateinit var binding : ActivityMainBinding
+
+    lateinit var mPagerAdapter : MainViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,13 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mPagerAdapter = MainViewPagerAdapter(this)
+        binding.mainViewPager.adapter = mPagerAdapter
+
+        binding.mainViewPager.currentItem = 1
+        binding.mainViewPager.isUserInputEnabled = false
+        binding.bottomNav.selectedItemId = R.id.market
 
         binding.mainViewPager.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {

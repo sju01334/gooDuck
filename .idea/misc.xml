@@ -19,9 +19,11 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_splash.xml" value="0.18" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_action_bar.xml" value="0.25" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_market.xml" value="0.2" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_image_slide.xml" value="0.23001282599401454" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_market.xml" value="0.28547008547008546" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_review.xml" value="0.2509619495510902" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_setting.xml" value="0.2509619495510902" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/item_slider.xml" value="0.14279606669516887" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2509619495510902" />
       </map>
     </option>
