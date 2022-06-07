@@ -2,10 +2,7 @@ package com.nepplus.gooduck.api
 
 import com.nepplus.gooduck.models.BasicResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface APIList {
 
@@ -19,5 +16,21 @@ interface APIList {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<BasicResponse>
+
+    @FormUrlEncoded
+    @PUT("/user")
+    fun putRequestSignUp(
+        @Field("nick_name") nickname: String,
+        @Field("email") email: String,
+        @Field("password") pw: String,
+        @Field("phone") phone: String,
+    ): Call<BasicResponse>
+
+    @GET("/user/check")
+    fun getRequestUserCheck(
+        @Query("type") type: String,
+        @Query("value") value: String
+    ): Call<BasicResponse>
+
 
 }
