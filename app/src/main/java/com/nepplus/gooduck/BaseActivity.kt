@@ -18,15 +18,15 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var apiList : APIList
 
     lateinit var titleTxt : TextView
-    lateinit var addBtn : ImageView
+    lateinit var bagBtn : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
 
-//        supportActionBar?.let{
-//            setCustomActionBar()
-//        }
+        supportActionBar?.let{
+            setCustomActionBar()
+        }
 
         retrofit = ServerApi.getRetrofit(mContext)
         apiList = retrofit.create(APIList::class.java)
@@ -35,16 +35,16 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun setupEvents()
     abstract  fun setValues()
 
-//    fun setCustomActionBar () {
-//        val defActionBar = supportActionBar!!
-//        defActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-//        defActionBar.setCustomView(R.layout.my_custom_action_bar)
-//
-//        val toolbar = defActionBar.customView.parent as Toolbar
-//        toolbar.setContentInsetsAbsolute(0,0)
-//
-//        titleTxt = defActionBar.customView.findViewById(R.id.titleTxt)
-//        addBtn = defActionBar.customView.findViewById(R.id.addBtn)
-//
-//    }
+    fun setCustomActionBar () {
+        val defActionBar = supportActionBar!!
+        defActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        defActionBar.setCustomView(R.layout.custom_action_bar)
+
+        val toolbar = defActionBar.customView.parent as Toolbar
+        toolbar.setContentInsetsAbsolute(0,0)
+
+        titleTxt = defActionBar.customView.findViewById(R.id.titleTxt)
+        bagBtn = defActionBar.customView.findViewById(R.id.bagBtn)
+
+    }
 }

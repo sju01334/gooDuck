@@ -7,6 +7,7 @@ import retrofit2.http.*
 interface APIList {
 
     //user
+
     @GET("/user")
     fun getRequestMyInfo(): Call<BasicResponse>
 
@@ -31,6 +32,26 @@ interface APIList {
         @Query("type") type: String,
         @Query("value") value: String
     ): Call<BasicResponse>
+
+    @GET("/user/find/email")
+    fun getReqeustFindId(
+        @Query("nick_name") nickname : String,
+        @Query("phone") phone : String
+    ) : Call<BasicResponse>
+
+    @GET("/user/find/password")
+    fun getReqeustFindPw(
+        @Query("nick_name") nickname : String,
+        @Query("email") email : String
+    ) : Call<BasicResponse>
+
+    @FormUrlEncoded
+    @POST("/user/social")
+    fun postRequestSocialLogin(
+        @Field("provider") provider : String,
+        @Field("uid") uid : String,
+        @Field("nick_name") nickname : String
+    ) : Call<BasicResponse>
 
 
 }

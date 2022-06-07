@@ -1,4 +1,4 @@
-package com.nepplus.gooduck.ui.main
+package com.nepplus.gooduck.ui.signup
 
 import android.os.Bundle
 import android.util.Log
@@ -48,10 +48,18 @@ class SignupActivity : BaseActivity() {
                 Toast.makeText(mContext, "닉네임 중복 체크를 해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            else if( binding.phoneEdt.text.isEmpty()){
+                Toast.makeText(mContext, "핸드폰 번호를 입력하세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 //            실제 회원가입
             else {
                 signUp()
             }
+        }
+
+        binding.backBtn.setOnClickListener {
+            finish()
         }
 
         binding.emailDupBtn.setOnClickListener {
