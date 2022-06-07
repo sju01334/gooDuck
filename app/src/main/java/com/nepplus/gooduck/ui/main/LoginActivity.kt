@@ -66,6 +66,12 @@ class LoginActivity : BaseActivity() {
             })
         }
 
+        binding.signUpBtn.setOnClickListener {
+            val myIntent = Intent(mContext, SignupActivity::class.java)
+            startActivity(myIntent)
+
+        }
+
     }
 
     override fun setValues() {
