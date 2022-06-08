@@ -1,5 +1,6 @@
 package com.nepplus.gooduck.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -17,6 +18,7 @@ import com.nepplus.gooduck.models.Banner
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Category
 import com.nepplus.gooduck.models.SmallCategory
+import com.nepplus.gooduck.ui.main.MainActivity
 import kotlinx.coroutines.flow.combine
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +32,6 @@ class MarketFragment  : BaseFragment(){
 
     lateinit var mMarketAdapter : MarketRecyclerAdapter
     var mMarketList = ArrayList<Category>()
-
 
 
     override fun onCreateView(

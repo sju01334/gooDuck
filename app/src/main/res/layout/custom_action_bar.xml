@@ -8,10 +8,10 @@
         android:id="@+id/sideBarBtn"
         android:layout_width="40dp"
         android:layout_height="50dp"
-        android:src="@drawable/three_line"
-        android:padding="10dp"
         android:layout_gravity="center|start"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginEnd="10dp"
+        android:padding="10dp"
+        android:src="@drawable/three_line" />
 
     <ImageView
         android:id="@+id/arrowBtn"

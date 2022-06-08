@@ -18,7 +18,13 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var apiList : APIList
 
     lateinit var titleTxt : TextView
+    lateinit var subTitleTxt : TextView
+
     lateinit var bagBtn : ImageView
+    lateinit var sideBarBtn : ImageView
+    lateinit var arrowBtn : ImageView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +50,10 @@ abstract class BaseActivity : AppCompatActivity() {
         toolbar.setContentInsetsAbsolute(0,0)
 
         titleTxt = defActionBar.customView.findViewById(R.id.titleTxt)
+        subTitleTxt = defActionBar.customView.findViewById(R.id.subTitleTxt)
         bagBtn = defActionBar.customView.findViewById(R.id.bagBtn)
+        sideBarBtn = defActionBar.customView.findViewById(R.id.sideBarBtn)
+        arrowBtn = defActionBar.customView.findViewById(R.id.arrowBtn)
 
     }
 }

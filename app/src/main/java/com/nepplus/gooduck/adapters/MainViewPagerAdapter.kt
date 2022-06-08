@@ -8,6 +8,7 @@ import com.nepplus.gooduck.fragments.ReviewFragment
 import com.nepplus.gooduck.fragments.SettingFragment
 
 class MainViewPagerAdapter(fa : FragmentActivity) : FragmentStateAdapter(fa) {
+
     override fun getItemCount() = 3
 
     override fun createFragment(position: Int): Fragment {

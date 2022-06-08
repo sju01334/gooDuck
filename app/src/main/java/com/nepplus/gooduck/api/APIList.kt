@@ -61,4 +61,8 @@ interface APIList {
     @GET("/category")
     fun getRequestAllCategory() : Call<BasicResponse>
 
+
+    @GET("/category/small/{small_category_id}")
+    fun getRequestProducts(@Path("small_category_id") id : Int) : Call<BasicResponse>
+
 }

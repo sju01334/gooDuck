@@ -4,11 +4,13 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.ItemGroupBinding
 import com.nepplus.gooduck.databinding.ItemHeaderBinding
 import com.nepplus.gooduck.databinding.ItemSliderBinding
@@ -39,7 +41,7 @@ class MarketRecyclerAdapter(
 
             mSmallList.clear()
             setPicture(item)
-            Log.d("이미지 있니?", item.smallCategories[0].imageUrl)
+//            Log.d("이미지 있니?", item.smallCategories[0].imageUrl)
             mSmallList.addAll(item.smallCategories)
 
             mSmallAdapter = MarketChildRecyclerAdapter(mContext, mSmallList)

@@ -2,6 +2,7 @@ package com.nepplus.gooduck.ui.main
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
@@ -50,5 +51,9 @@ class MainActivity : BaseActivity() {
             }
             return@setOnItemSelectedListener true
         }
+    }
+
+    fun fragmentChange(frag : Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.mainViewPager, frag).commit()
     }
 }

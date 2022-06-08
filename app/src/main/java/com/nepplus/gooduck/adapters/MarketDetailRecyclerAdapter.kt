@@ -11,40 +11,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.ItemSmallCategoryBinding
+import com.nepplus.gooduck.databinding.ListItemDetailBinding
+import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.models.SmallCategory
 import com.nepplus.gooduck.ui.market.MarketDetailActivity
 
-class MarketChildRecyclerAdapter(
+class MarketDetailRecyclerAdapter(
     val mContext: Context,
-    val mList: List<SmallCategory>
-) : RecyclerView.Adapter<MarketChildRecyclerAdapter.ItemViewHolder>() {
+    val mList: List<Product>
+) : RecyclerView.Adapter<MarketDetailRecyclerAdapter.ItemViewHolder>() {
 
-    lateinit var binding: ItemSmallCategoryBinding
+    lateinit var binding: ListItemDetailBinding
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: SmallCategory) {
-            binding.smallCategory.text = item.name
-            Glide.with(itemView.context).load(item.imageUrl).fitCenter().into(binding.smallImage)
-
-            binding.smallImage.setOnClickListener {
-                Log.d("선택된자는", item.name)
-
-                val myIntent = Intent(mContext, MarketDetailActivity::class.java)
-                myIntent.putExtra("sCategories", item)
-                mContext.startActivity(myIntent)
-
-            }
+        fun bind(item: Product) {
+            binding.name.text = item.name
+            binding.price.text = "${item.price}원"
+            binding.originalPrice.text = "${item.price * 1.3}원"
+            Glide.with(mContext).load(item.imageUrl).fitCenter().into(binding.image)
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        binding = DataBindingUtil.inflate(
-            LayoutInflater.from(mContext),
-            R.layout.item_small_category,
-            parent,
-            false
-        )
+        binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.list_item_detail, parent, false)
         return ItemViewHolder(binding.root)
     }
 
