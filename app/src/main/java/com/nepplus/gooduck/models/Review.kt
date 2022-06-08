@@ -6,7 +6,7 @@ class Review (
     val id : Int,
     val title : String,
     val content : String,
-    val score : Int,
+    val score : Float,
     @SerializedName("review_count")
     val reviewCnt : Int,
     @SerializedName("user_id")
@@ -18,7 +18,7 @@ class Review (
     @SerializedName("created_at")
     val createdAt : String,
     val user : UserData,
-    val tags : Tag
+    val tags : List<Tag>
 
         ){
 }

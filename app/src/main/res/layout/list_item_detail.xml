@@ -27,20 +27,31 @@
                             android:src="@mipmap/ic_launcher_round" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/addCart"
+                            android:id="@+id/addCartBtn"
                             app:cardCornerRadius="5dp"
                             android:layout_width="30dp"
-                            android:layout_margin="5dp"
+                            android:layout_margin="3dp"
                             android:layout_height="30dp">
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/white"
+                                android:background="@color/grassgreen"
                                 android:padding="3dp"
                                 android:src="@drawable/add_cart" />
 
                         </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/deleteBtn"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="삭제"
+                            android:background="@drawable/r5_red_rectangle_fill"
+                            android:backgroundTint="@color/red"
+                            android:textColor="@color/white"
+                            android:layout_margin="3dp"
+                            android:padding="5dp"/>
 
                     </FrameLayout>
 
@@ -111,7 +122,7 @@
                         android:id="@+id/reviewBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/r5_lightgray_rectangle"
+                        android:textColor="@color/primary"
                         android:backgroundTint="@color/white"
                         android:text="리뷰보기" />
 

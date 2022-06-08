@@ -8,6 +8,8 @@ class Product (
     val price : Int,
     @SerializedName("image_url")
     val imageUrl : String,
+    @SerializedName("store_id")
+    val storeId : Int,
     @SerializedName("small_category_id")
     val smallCategoryId : Int,
     @SerializedName("small_category")

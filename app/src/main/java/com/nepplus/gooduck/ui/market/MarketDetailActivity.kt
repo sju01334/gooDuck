@@ -81,7 +81,7 @@ class MarketDetailActivity : BaseActivity () {
                 }
             }
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-                Log.d("호출 실패", "실패")
+                Log.d("호출 실패", t.toString())
             }
         })
     }
