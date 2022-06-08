@@ -23,7 +23,8 @@ class MarketChildRecyclerAdapter(
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: SmallCategory) {
             binding.smallCategory.text = item.name
-            Glide.with(mContext).load(item.imageUrl).into(binding.smallImage)
+            Log.d("여기여기", item.imageUrl)
+            Glide.with(itemView.context).load(item.imageUrl).fitCenter().into(binding.smallImage)
         }
     }
 

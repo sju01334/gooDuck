@@ -28,7 +28,8 @@ class MarketRecyclerAdapter(
             binding.title.text = item.name
 
             mSmallList.clear()
-//            setPicture(item)
+            setPicture(item)
+            Log.d("이미지 있니?", item.smallCategories[0].imageUrl)
             mSmallList.addAll(item.smallCategories)
 
         }
@@ -57,31 +58,31 @@ class MarketRecyclerAdapter(
         return mList.size
     }
 
-//    fun setPicture(item: Category){
-//        when( item.id){
-//            1 -> {
-//                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//            }
-//            2 -> {
-//                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//            }
-//            3 -> {
-//                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
-//            }
-//        }
-//    }
+    fun setPicture(item: Category){
+        when( item.id){
+            1 -> {
+                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+            }
+            2 -> {
+                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+            }
+            3 -> {
+                item.smallCategories[0].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[1].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[2].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[3].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+                item.smallCategories[4].imageUrl ="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2017/04/24/20170424000318_0.jpg"
+            }
+        }
+    }
 
 
 
