@@ -2,7 +2,7 @@ package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
 
-class Product (
+data class Product (
     val id : Int,
     val name : String,
     val price : Int,

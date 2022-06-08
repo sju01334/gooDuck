@@ -57,12 +57,22 @@ interface APIList {
     @GET("/main/banner")
     fun getRequestBanner() : Call<BasicResponse>
 
-    //category
+    //  category
     @GET("/category")
     fun getRequestAllCategory() : Call<BasicResponse>
 
-
     @GET("/category/small/{small_category_id}")
     fun getRequestProducts(@Path("small_category_id") id : Int) : Call<BasicResponse>
+
+    //  cart
+    @FormUrlEncoded
+    @POST("/cart")
+    fun postRequestAddCart(@Field("product_id") productId : Int) : Call<BasicResponse>
+
+    @GET("/cart")
+    fun getRequestMyCartList() : Call<BasicResponse>
+
+    @DELETE("/cart")
+    fun deleteRequestMyCartProduct(@Query("product_id") productId : Int) : Call<BasicResponse>
 
 }

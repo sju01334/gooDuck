@@ -2,7 +2,7 @@ package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
 
-class Review (
+data class Review (
     val id : Int,
     val title : String,
     val content : String,

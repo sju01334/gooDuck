@@ -2,7 +2,7 @@ package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
 
-class UserData(
+data class UserData(
     val id : Int,
     val provider : String,
     val uid : String,

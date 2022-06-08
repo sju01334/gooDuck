@@ -2,7 +2,7 @@ package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
 
-class Category(
+data class Category(
     val id : Int,
     val name : String,
     @SerializedName("small_categories")

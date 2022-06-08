@@ -1,6 +1,7 @@
 package com.nepplus.gooduck
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
+import com.nepplus.gooduck.ui.market.CartActivity
 import retrofit2.Retrofit
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -22,7 +24,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     lateinit var bagBtn : ImageView
     lateinit var sideBarBtn : ImageView
-    lateinit var arrowBtn : ImageView
+    lateinit var backBtn : ImageView
 
 
 
@@ -53,7 +55,12 @@ abstract class BaseActivity : AppCompatActivity() {
         subTitleTxt = defActionBar.customView.findViewById(R.id.subTitleTxt)
         bagBtn = defActionBar.customView.findViewById(R.id.bagBtn)
         sideBarBtn = defActionBar.customView.findViewById(R.id.sideBarBtn)
-        arrowBtn = defActionBar.customView.findViewById(R.id.arrowBtn)
+        backBtn = defActionBar.customView.findViewById(R.id.backBtn)
+
+        bagBtn.setOnClickListener {
+            val myInent = Intent(mContext, CartActivity::class.java)
+            startActivity(myInent)
+        }
 
     }
 }

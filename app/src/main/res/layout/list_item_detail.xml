@@ -5,7 +5,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            android:layout_margin="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,15 +64,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="12dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1">
+
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:text="상품"
                         android:textColor="@color/black"
-                        android:text="상품"/>
+                        android:textSize="15sp" />
+
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -79,17 +84,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:text="30%"
-                            android:textColor="@color/primary"/>
+                            android:textSize="12sp"
+                            android:textColor="@color/primary" />
 
                         <TextView
                             android:id="@+id/originalPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="2dp"
+                            android:textSize="13sp"
                             android:text="6300원"
                             android:textColor="@color/mediumGray"/>
                     </LinearLayout>
@@ -110,6 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     android:padding="10dp">
 
                     <Button
@@ -118,11 +127,13 @@
                         android:layout_height="wrap_content"
                         android:text="구독하기" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/mediumGray"
                         android:id="@+id/reviewBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/mediumGray"
                         android:backgroundTint="@color/white"
                         android:text="리뷰보기" />
 

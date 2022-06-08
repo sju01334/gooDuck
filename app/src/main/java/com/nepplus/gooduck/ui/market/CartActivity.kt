@@ -9,30 +9,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.MarketDetailRecyclerAdapter
+import com.nepplus.gooduck.databinding.ActivityCartBinding
 import com.nepplus.gooduck.databinding.ActivityMarketDetailBinding
 import com.nepplus.gooduck.models.BasicResponse
-import com.nepplus.gooduck.models.Product
-import com.nepplus.gooduck.models.SmallCategory
+import com.nepplus.gooduck.models.Cart
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MarketDetailActivity : BaseActivity () {
+class CartActivity : BaseActivity () {
 
-    lateinit var binding : ActivityMarketDetailBinding
-
-    lateinit var sCategories : SmallCategory
+    lateinit var binding : ActivityCartBinding
 
     lateinit var mDetailAdapter : MarketDetailRecyclerAdapter
-    var mProductList = ArrayList<Product>()
+    var mCartList = ArrayList<Cart>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=DataBindingUtil.setContentView(this, R.layout.activity_market_detail)
+        binding=DataBindingUtil.setContentView(this, R.layout.activity_cart)
 
-
-        sCategories = intent.getSerializableExtra("sCategories") as SmallCategory
         getProductData()
 
         setupEvents()
@@ -45,16 +41,17 @@ class MarketDetailActivity : BaseActivity () {
             finish()
         }
 
-
     }
 
     override fun setValues() {
+
         backBtn.visibility = View.VISIBLE
+        bagBtn.visibility = View.GONE
         sideBarBtn.visibility = View.GONE
-        titleTxt.text = sCategories.name
+        titleTxt.text = "장바구니"
         titleTxt.setTextSize(Dimension.SP, 18F)
 
-        mDetailAdapter = MarketDetailRecyclerAdapter(mContext, mProductList, null, "Detail")
+        mDetailAdapter = MarketDetailRecyclerAdapter(mContext, null, mCartList, "Cart")
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
         binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
@@ -62,12 +59,12 @@ class MarketDetailActivity : BaseActivity () {
 
     fun getProductData(){
 
-        apiList.getRequestProducts(sCategories.id).enqueue(object : Callback<BasicResponse>{
+        apiList.getRequestMyCartList().enqueue(object : Callback<BasicResponse>{
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
                 if(response.isSuccessful){
                     val br = response.body()!!
-                    mProductList.clear()
-                    mProductList.addAll(br.data.products)
+                    mCartList.clear()
+                    mCartList.addAll(br.data.carts)
                     mDetailAdapter.notifyDataSetChanged()
                 }else{
                     val errorBodyStr = response.errorBody()!!.string()
