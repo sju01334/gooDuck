@@ -1,17 +1,23 @@
 package com.nepplus.gooduck.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.ImageSliderAdapter
+import com.nepplus.gooduck.adapters.MarketRecyclerAdapter
 import com.nepplus.gooduck.databinding.FragmentMarketBinding
 import com.nepplus.gooduck.models.Banner
 import com.nepplus.gooduck.models.BasicResponse
+import com.nepplus.gooduck.models.Category
+import com.nepplus.gooduck.models.SmallCategory
+import kotlinx.coroutines.flow.combine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +28,21 @@ class MarketFragment  : BaseFragment(){
 
     lateinit var mSliderAdapter : ImageSliderAdapter
     var mbannerList = ArrayList<Banner>()
+
+    lateinit var mMarketAdapter : MarketRecyclerAdapter
+    var mMarketList = ArrayList<Category>()
+
+    val bannerRunnable = object : Runnable{
+        override fun run() {
+            val cnt = mbannerList.size
+            if(binding.bannerVeiwPager.currentItem == cnt){
+                binding.bannerVeiwPager.currentItem = 0
+            }else{
+                binding.bannerVeiwPager.currentItem += 1
+            }
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +56,11 @@ class MarketFragment  : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getImageList()
+        getMarketList()
         setupEvents()
         setValues()
+
+
 
     }
 
@@ -45,9 +69,13 @@ class MarketFragment  : BaseFragment(){
     }
 
     override fun setValues() {
+
+
         mSliderAdapter = ImageSliderAdapter(mContext, mbannerList)
         binding.bannerVeiwPager.adapter = mSliderAdapter
         binding.bannerVeiwPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        binding.dotsIndicator.setViewPager2(binding.bannerVeiwPager)
 
         binding.bannerVeiwPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
@@ -55,6 +83,11 @@ class MarketFragment  : BaseFragment(){
 
             }
         })
+
+        mMarketAdapter = MarketRecyclerAdapter(mContext, mMarketList)
+        binding.bigRecyclerView.adapter = mMarketAdapter
+        binding.bigRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
 
     }
 
@@ -66,13 +99,26 @@ class MarketFragment  : BaseFragment(){
                     mbannerList.clear()
                     mbannerList.addAll(br.data.banners)
                     mSliderAdapter.notifyDataSetChanged()
-                    Log.d("이미지 들어왔니", br.data.banners[0].imgUrl)
                 }
             }
-
-            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-
-            }
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
         })
     }
+
+    fun getMarketList(){
+        apiList.getRequestAllCategory().enqueue(object : Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+                if(response.isSuccessful){
+                    val br = response.body()!!
+                    mMarketList.clear()
+                    mMarketList.addAll(br.data.categories)
+                    mMarketAdapter.notifyDataSetChanged()
+                }
+            }
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
+        })
+    }
+
+
+
 }

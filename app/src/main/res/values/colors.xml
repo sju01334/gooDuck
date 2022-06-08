@@ -10,5 +10,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#FFFFB347</color>
     <color name="secondary">#FFF1F1F1</color>
-    <color name="lightGray">#FFA6A6A6</color>
+    <color name="mediumGray">#FFA6A6A6</color>
+    <color name="lightGray">#FFF1F1F1</color>
 </resources>

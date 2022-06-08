@@ -57,5 +57,8 @@ interface APIList {
     @GET("/main/banner")
     fun getRequestBanner() : Call<BasicResponse>
 
+    //category
+    @GET("/category")
+    fun getRequestAllCategory() : Call<BasicResponse>
 
 }
