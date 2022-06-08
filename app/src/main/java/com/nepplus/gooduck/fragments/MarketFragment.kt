@@ -26,22 +26,11 @@ class MarketFragment  : BaseFragment(){
 
     lateinit var binding : FragmentMarketBinding
 
-    lateinit var mSliderAdapter : ImageSliderAdapter
     var mbannerList = ArrayList<Banner>()
 
     lateinit var mMarketAdapter : MarketRecyclerAdapter
     var mMarketList = ArrayList<Category>()
 
-    val bannerRunnable = object : Runnable{
-        override fun run() {
-            val cnt = mbannerList.size
-            if(binding.bannerVeiwPager.currentItem == cnt){
-                binding.bannerVeiwPager.currentItem = 0
-            }else{
-                binding.bannerVeiwPager.currentItem += 1
-            }
-        }
-    }
 
 
     override fun onCreateView(
@@ -60,8 +49,6 @@ class MarketFragment  : BaseFragment(){
         setupEvents()
         setValues()
 
-
-
     }
 
     override fun setupEvents() {
@@ -71,20 +58,7 @@ class MarketFragment  : BaseFragment(){
     override fun setValues() {
 
 
-        mSliderAdapter = ImageSliderAdapter(mContext, mbannerList)
-        binding.bannerVeiwPager.adapter = mSliderAdapter
-        binding.bannerVeiwPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
-        binding.dotsIndicator.setViewPager2(binding.bannerVeiwPager)
-
-        binding.bannerVeiwPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-
-            }
-        })
-
-        mMarketAdapter = MarketRecyclerAdapter(mContext, mMarketList)
+        mMarketAdapter = MarketRecyclerAdapter(mContext, mbannerList, mMarketList)
         binding.bigRecyclerView.adapter = mMarketAdapter
         binding.bigRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
@@ -98,7 +72,6 @@ class MarketFragment  : BaseFragment(){
                     val br = response.body()!!
                     mbannerList.clear()
                     mbannerList.addAll(br.data.banners)
-                    mSliderAdapter.notifyDataSetChanged()
                 }
             }
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
