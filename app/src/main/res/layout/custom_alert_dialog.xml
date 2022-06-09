@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
+        android:background="@drawable/r10_rectangle"
         android:orientation="vertical">
 
         <TextView
@@ -34,6 +35,7 @@
 
         <EditText
             android:id="@+id/contentEdt2"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -47,7 +49,7 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/positiveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +59,7 @@
                 android:text="확인"
                 app:cornerRadius="10dp" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 app:strokeColor="@color/mediumGray"
                 app:strokeWidth="1dp"
                 app:cornerRadius="10dp"

@@ -13,6 +13,7 @@ import com.nepplus.gooduck.R
 import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
 import com.nepplus.gooduck.databinding.ListItemDetailBinding
+import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Cart
 import com.nepplus.gooduck.models.Product
@@ -90,34 +91,50 @@ class MarketDetailRecyclerAdapter(
 
             binding.deleteBtn.setOnClickListener {
 
-                apiList.deleteRequestMyCartProduct(item.product.id).enqueue(object : Callback<BasicResponse>{
-                    override fun onResponse(
-                        call: Call<BasicResponse>,
-                        response: Response<BasicResponse>
-                    ) {
-                        if(response.isSuccessful){
-                            val br = response.body()!!
+                val alert = CustomAlertDialog(mContext, mContext as CartActivity)
+                alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                    override fun positiveBtnClicked() {
+                        apiList.deleteRequestMyCartProduct(item.product.id).enqueue(object : Callback<BasicResponse>{
+                            override fun onResponse(
+                                call: Call<BasicResponse>,
+                                response: Response<BasicResponse>
+                            ) {
+                                if(response.isSuccessful){
+                                    val br = response.body()!!
 
-                            Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
 
-                        }else {
-                            val errorBody = response.errorBody()!!.string()
-                            val jsonObj = JSONObject(errorBody)
-                            val code = jsonObj.getString("code")
-                            val message = jsonObj.getString("message")
+                                }else {
+                                    val errorBody = response.errorBody()!!.string()
+                                    val jsonObj = JSONObject(errorBody)
+                                    val code = jsonObj.getString("code")
+                                    val message = jsonObj.getString("message")
 
-                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
-                        }
+                                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                                }
 
-                        (mContext as CartActivity).getProductData()
+                                (mContext as CartActivity).getProductData()
 
+                            }
+
+                            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                                Log.d("호출에러", t.toString())
+                            }
+                        })
                     }
 
-                    override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-                        Log.d("호출에러", t.toString())
+                    override fun negativeBtnClicked() {
                     }
+
                 })
+
+                alert.binding.contentEdt1.visibility = View.GONE
+                alert.binding.titleTxt.text = "장바구니 삭제"
+                alert.binding.bodyTxt.text = "${item.product.name} 을 삭제하시겠습니까?"
+
+
+
 
             }
         }
