@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:width="@dimen/resize"
-        android:height="@dimen/resize"
-        android:drawable="@drawable/phone_yellow"/>
+        android:width="15dp"
+        android:height="15dp"
+        android:drawable="@drawable/plus_white"/>
 </layer-list>

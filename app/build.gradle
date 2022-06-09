@@ -74,4 +74,10 @@ dependencies {
 //    dotsindicator
     implementation("com.tbuonomo:dotsindicator:4.3")
 
+//    SimpleRatingBar
+    implementation('com.github.ome450901:SimpleRatingBar:1.5.1')
+
+
+
+
 }

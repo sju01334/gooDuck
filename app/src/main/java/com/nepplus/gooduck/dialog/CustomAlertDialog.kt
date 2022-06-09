@@ -28,10 +28,12 @@ class CustomAlertDialog(val mContext : Context, val activity : Activity) {
 
         binding.positiveBtn.setOnClickListener {
             onClickListener.positiveBtnClicked()
+            dialog.dismiss()
         }
 
         binding.negativeBtn.setOnClickListener {
             onClickListener.negativeBtnClicked()
+            dialog.dismiss()
         }
 
         dialog.show()

@@ -8,29 +8,36 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/custom_button_yellow.xml" value="0.206" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/lightgray_rectangle_r5.xml" value="0.206" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/primary_rectangle_r5.xml" value="0.1955" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r10_rectangle.xml" value="0.2115" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r50_red_fill.xml" value="0.1235" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r50_white_fill.xml" value="0.1235" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r50_yellow_fill.xml" value="0.1235" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r5_empty_rectangle.xml" value="0.1885" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r5_lightgray_rectangle.xml" value="0.2115" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r5_primary_rectangle_fill.xml" value="0.1955" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r5_red_rectangle_fill.xml" value="0.1885" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r5_yellow_fill.xml" value="0.2115" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/resize_email_yellow.xml" value="0.206" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/resize_lock_yellow.xml" value="0.206" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/resize_nickname_yellow.xml" value="0.1515" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/resize_phone_yellow.xml" value="0.1515" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/resize_plus.xml" value="0.2115" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/font/fugaz_one.xml" value="0.3814814814814815" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_cart.xml" value="0.16673792218896966" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_cart.xml" value="0.33" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_login.xml" value="0.3" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_market_detail.xml" value="0.2901178603807797" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_review.xml" value="0.2901178603807797" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_search_email.xml" value="0.2901178603807797" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_search_password.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_splash.xml" value="0.18" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_action_bar.xml" value="0.33" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_alert_dialog.xml" value="0.33" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_alert_dialog.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_image_slide.xml" value="0.23001282599401454" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_market.xml" value="0.28547008547008546" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_market_detail.xml" value="0.1791363830696879" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_review.xml" value="0.2509619495510902" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_review.xml" value="0.16" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_setting.xml" value="0.2509619495510902" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/item_featured.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/item_group.xml" value="0.33" />
@@ -38,6 +45,7 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/item_slider.xml" value="0.14279606669516887" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/item_small_category.xml" value="0.75" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_detail.xml" value="0.3520074696545285" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_review.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2509619495510902" />
       </map>
     </option>

@@ -6,6 +6,7 @@ data class DataResponse(
     val banners : List<Banner>,
     val categories : List<Category>,
     val products : List<Product>,
-    val carts : List<Cart>
+    val carts : List<Cart>,
+    val reviews : List<Review>
 ) {
 }

@@ -18,6 +18,7 @@ data class Review (
     @SerializedName("created_at")
     val createdAt : String,
     val user : UserData,
+    val product : Product,
     val tags : List<Tag>
 
         ){

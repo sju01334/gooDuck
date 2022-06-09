@@ -34,6 +34,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         supportActionBar?.let{
             setCustomActionBar()
+
         }
 
         retrofit = ServerApi.getRetrofit(mContext)
@@ -60,6 +61,10 @@ abstract class BaseActivity : AppCompatActivity() {
         bagBtn.setOnClickListener {
             val myInent = Intent(mContext, CartActivity::class.java)
             startActivity(myInent)
+        }
+
+        backBtn.setOnClickListener {
+            finish()
         }
 
     }

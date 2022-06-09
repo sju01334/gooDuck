@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +19,12 @@ import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Cart
 import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.ui.market.CartActivity
+import com.nepplus.gooduck.ui.market.ReviewActivity
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class MarketDetailRecyclerAdapter(
@@ -35,7 +38,6 @@ class MarketDetailRecyclerAdapter(
     lateinit var binding: ListItemDetailBinding
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
 
@@ -74,6 +76,7 @@ class MarketDetailRecyclerAdapter(
                 })
 
             }
+            gotoReview(item.id)
         }
 
 
@@ -86,8 +89,6 @@ class MarketDetailRecyclerAdapter(
 
             binding.addCartBtn.visibility = View.GONE
             binding.deleteBtn.visibility = View.VISIBLE
-
-
 
             binding.deleteBtn.setOnClickListener {
 
@@ -137,6 +138,10 @@ class MarketDetailRecyclerAdapter(
 
 
             }
+
+            gotoReview(item.productId)
+
+            itemView
         }
     }
 
@@ -167,6 +172,18 @@ class MarketDetailRecyclerAdapter(
 
     fun setItemClickListener(onItemClickListener: OnItemClickListener){
         this.itemClickListener = onItemClickListener
+    }
+
+    fun gotoReview(productId : Int){
+
+
+        binding.reviewBtn.setOnClickListener {
+            val myIntent = Intent(mContext, ReviewActivity::class.java)
+
+            Log.d("상품아이디", productId.toString())
+            myIntent.putExtra("product_id", productId)
+            mContext.startActivity(myIntent)
+        }
     }
 
 

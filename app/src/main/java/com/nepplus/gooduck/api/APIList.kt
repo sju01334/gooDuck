@@ -64,6 +64,9 @@ interface APIList {
     @GET("/category/small/{small_category_id}")
     fun getRequestProducts(@Path("small_category_id") id : Int) : Call<BasicResponse>
 
+    @GET("/category/small/{small_category_id}/review")
+    fun getRequestProductsReview(@Path("small_category_id") id : Int) : Call<BasicResponse>
+
     //  cart
     @FormUrlEncoded
     @POST("/cart")
@@ -74,5 +77,9 @@ interface APIList {
 
     @DELETE("/cart")
     fun deleteRequestMyCartProduct(@Query("product_id") productId : Int) : Call<BasicResponse>
+
+    //  review
+    @GET("/review")
+    fun getRequestAllReview() : Call<BasicResponse>
 
 }

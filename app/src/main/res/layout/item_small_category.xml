@@ -5,7 +5,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/r5_red_rectangle_fill"
+        android:background="@drawable/r5_yellow_fill"
 
         android:layout_margin="10dp">
 
@@ -36,7 +36,6 @@
                     android:id="@+id/smallCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="소분류"
                     android:textColor="@color/white" />
             </LinearLayout>

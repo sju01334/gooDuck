@@ -145,8 +145,8 @@
             android:id="@+id/signUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button_yellow"
-            android:textSize="18sp"
+            android:background="@drawable/r50_yellow_fill"
+            android:textSize="@dimen/buttonTxt"
             android:text="가입하기"
             android:textColor="@color/white" />
 

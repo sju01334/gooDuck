@@ -3,6 +3,7 @@ package com.nepplus.gooduck.ui.market
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,9 +35,9 @@ class MarketDetailActivity : BaseActivity () {
 
         sCategories = intent.getSerializableExtra("sCategories") as SmallCategory
         getProductData()
-
-        setupEvents()
         setValues()
+        setupEvents()
+
 
     }
 
@@ -44,6 +45,12 @@ class MarketDetailActivity : BaseActivity () {
         backBtn.setOnClickListener {
             finish()
         }
+
+        mDetailAdapter.setItemClickListener(object : MarketDetailRecyclerAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                Toast.makeText(mContext, position.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
 
 
     }

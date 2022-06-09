@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttonTxt">18sp</dimen>
+    <dimen name="resize">20dp</dimen>
+</resources>
