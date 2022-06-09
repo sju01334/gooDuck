@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "527348482169",
+    "project_id": "gooduck-b41e5",
+    "storage_bucket": "gooduck-b41e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527348482169:android:fbdcf578837ceaa87e14a8",
+        "android_client_info": {
+          "package_name": "com.nepplus.gooduck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527348482169-smas1crlbbdm98dj16mmqvets1kuocmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYucYVIESB1tEP2OE_n8drFdcPfZH1ojo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527348482169-smas1crlbbdm98dj16mmqvets1kuocmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.common.util.Utility
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
@@ -30,6 +31,7 @@ class SplashActivity : BaseActivity() {
         setValues()
 
         getKeyhash()
+        getDeviceToken()
 
     }
 
@@ -76,5 +78,11 @@ class SplashActivity : BaseActivity() {
         var keyHash = Utility.getKeyHash(mContext)
 
         Log.d("kakao_keyHash", keyHash)
+    }
+
+    fun getDeviceToken(){
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            it.result?.let { it1 -> Log.d("deviceToken", it1) }
+        }
     }
 }
