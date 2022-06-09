@@ -79,8 +79,6 @@ class MarketDetailRecyclerAdapter(
 
             binding.reviewBtn.setOnClickListener {
                 val myIntent = Intent(mContext, ReviewActivity::class.java)
-
-                Log.d("상품아이디", item.id.toString())
                 myIntent.putExtra("product", item)
                 mContext.startActivity(myIntent)
             }
@@ -145,6 +143,12 @@ class MarketDetailRecyclerAdapter(
 
 
 
+            }
+
+            binding.reviewBtn.setOnClickListener {
+                val myIntent = Intent(mContext, ReviewActivity::class.java)
+                myIntent.putExtra("product", item.product)
+                mContext.startActivity(myIntent)
             }
 
         }
