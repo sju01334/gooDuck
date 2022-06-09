@@ -3,6 +3,7 @@ package com.nepplus.gooduck.ui.market
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +11,6 @@ import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.MarketDetailRecyclerAdapter
 import com.nepplus.gooduck.databinding.ActivityCartBinding
-import com.nepplus.gooduck.databinding.ActivityMarketDetailBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Cart
 import org.json.JSONObject
@@ -30,9 +30,9 @@ class CartActivity : BaseActivity () {
         binding=DataBindingUtil.setContentView(this, R.layout.activity_cart)
 
         getProductData()
-
-        setupEvents()
         setValues()
+        setupEvents()
+
 
     }
 
@@ -40,6 +40,11 @@ class CartActivity : BaseActivity () {
         backBtn.setOnClickListener {
             finish()
         }
+        
+        mDetailAdapter.setItemClickListener(object : MarketDetailRecyclerAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+            }
+        })
 
     }
 
@@ -54,6 +59,7 @@ class CartActivity : BaseActivity () {
         mDetailAdapter = MarketDetailRecyclerAdapter(mContext, null, mCartList, "Cart")
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
         binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
 
     }
 

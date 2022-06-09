@@ -22,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class MarketDetailRecyclerAdapter(
     val mContext: Context,
     val mProductList: List<Product>?,
@@ -29,6 +30,7 @@ class MarketDetailRecyclerAdapter(
     val type : String
 ) : RecyclerView.Adapter<MarketDetailRecyclerAdapter.ItemViewHolder>() {
 
+    private lateinit var itemClickListener : OnItemClickListener
     lateinit var binding: ListItemDetailBinding
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,6 +44,7 @@ class MarketDetailRecyclerAdapter(
             binding.price.text = "${item.price}원"
             binding.originalPrice.text = "${item.price * 1.3}원"
             Glide.with(mContext).load(item.imageUrl).fitCenter().into(binding.image)
+
 
             binding.addCartBtn.setOnClickListener {
                 apiList.postRequestAddCart(item.id).enqueue(object : Callback<BasicResponse>{
@@ -72,6 +75,7 @@ class MarketDetailRecyclerAdapter(
             }
         }
 
+
         fun bindCart(item : Cart){
 
             binding.name.text = item.product.name
@@ -82,7 +86,10 @@ class MarketDetailRecyclerAdapter(
             binding.addCartBtn.visibility = View.GONE
             binding.deleteBtn.visibility = View.VISIBLE
 
+
+
             binding.deleteBtn.setOnClickListener {
+
                 apiList.deleteRequestMyCartProduct(item.product.id).enqueue(object : Callback<BasicResponse>{
                     override fun onResponse(
                         call: Call<BasicResponse>,
@@ -90,7 +97,9 @@ class MarketDetailRecyclerAdapter(
                     ) {
                         if(response.isSuccessful){
                             val br = response.body()!!
+
                             Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+
 
                         }else {
                             val errorBody = response.errorBody()!!.string()
@@ -100,6 +109,9 @@ class MarketDetailRecyclerAdapter(
 
                             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                         }
+
+                        (mContext as CartActivity).getProductData()
+
                     }
 
                     override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
@@ -121,6 +133,10 @@ class MarketDetailRecyclerAdapter(
             "Detail" -> holder.bind(mProductList!![position])
             else-> holder.bindCart(mCartLsit!![position])
         }
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -128,6 +144,12 @@ class MarketDetailRecyclerAdapter(
             "Detail" -> mProductList!!.size
             else-> mCartLsit!!.size
         }
+    }
+
+    interface OnItemClickListener{fun onClick(v : View , position: Int)}
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener){
+        this.itemClickListener = onItemClickListener
     }
 
 
