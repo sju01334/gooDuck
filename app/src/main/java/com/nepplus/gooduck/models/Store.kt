@@ -1,4 +1,6 @@
 package com.nepplus.gooduck.models
 
-class Store {
+import java.io.Serializable
+
+class Store: Serializable {
 }

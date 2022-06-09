@@ -1,5 +1,7 @@
 package com.nepplus.gooduck.models
 
+import java.io.Serializable
+
 data class DataResponse(
     val user : UserData,
     val token : String,
@@ -8,5 +10,5 @@ data class DataResponse(
     val products : List<Product>,
     val carts : List<Cart>,
     val reviews : List<Review>
-) {
+): Serializable {
 }

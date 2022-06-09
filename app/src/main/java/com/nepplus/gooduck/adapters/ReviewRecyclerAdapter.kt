@@ -18,33 +18,21 @@ import com.nepplus.gooduck.ui.market.MarketDetailActivity
 
 class ReviewRecyclerAdapter(
     val mContext: Context,
-    val mList: List<Review>,
-    val productId : Int
+    val mList: List<Review>
 ) : RecyclerView.Adapter<ReviewRecyclerAdapter.ItemViewHolder>() {
 
     lateinit var binding: ListItemReviewBinding
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Review) {
-//            if(productId == 0){
-                Glide.with(itemView.context).load(item.thumImg).fitCenter().into(binding.image)
-                binding.price.text = "${item.product.price}원"
-                binding.productName.text = item.product.name
-                binding.reviewName.text = item.title
-                binding.ratingTxt.text = "(${item.score})"
-                binding.userName.text = "작성자 : ${item.user.nickname}"
+
+            Glide.with(itemView.context).load(item.thumImg).fitCenter().into(binding.image)
+            binding.price.text = "${item.product.price}원"
+            binding.productName.text = item.product.name
+            binding.reviewName.text = item.title
+            binding.ratingTxt.text = "(${item.score})"
+            binding.userName.text = "작성자 : ${item.user.nickname}"
             binding.ratingBar.rating = item.score
-//            }
-
-//            if(item.product.id == productId){
-//                Glide.with(itemView.context).load(item.thumImg).fitCenter().into(binding.image)
-//                binding.price.text = "${item.product.price}원"
-//                binding.productName.text = item.product.name
-//                binding.reviewName.text = item.title
-//                binding.ratingTxt.text = "(${item.score})"
-//                binding.userName.text = "작성자 : ${item.user.nickname}"
-//            }
-
 
 
 

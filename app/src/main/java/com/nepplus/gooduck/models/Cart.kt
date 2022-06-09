@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Cart(
     val id : Int,
@@ -9,5 +10,5 @@ data class Cart(
     @SerializedName("product_id")
     val productId : Int,
     val product : Product
-) {
+): Serializable {
 }

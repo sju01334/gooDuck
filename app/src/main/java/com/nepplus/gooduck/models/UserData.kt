@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class UserData(
     val id : Int,
@@ -13,5 +14,5 @@ data class UserData(
     @SerializedName("profile_img")
     val profileImg : String,
     val point : Int
-){
+): Serializable {
 }

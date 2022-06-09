@@ -76,8 +76,16 @@ class MarketDetailRecyclerAdapter(
                 })
 
             }
-            gotoReview(item.id)
+
+            binding.reviewBtn.setOnClickListener {
+                val myIntent = Intent(mContext, ReviewActivity::class.java)
+
+                Log.d("상품아이디", item.id.toString())
+                myIntent.putExtra("product", item)
+                mContext.startActivity(myIntent)
+            }
         }
+
 
 
         fun bindCart(item : Cart){
@@ -139,9 +147,6 @@ class MarketDetailRecyclerAdapter(
 
             }
 
-            gotoReview(item.productId)
-
-            itemView
         }
     }
 
@@ -174,17 +179,6 @@ class MarketDetailRecyclerAdapter(
         this.itemClickListener = onItemClickListener
     }
 
-    fun gotoReview(productId : Int){
-
-
-        binding.reviewBtn.setOnClickListener {
-            val myIntent = Intent(mContext, ReviewActivity::class.java)
-
-            Log.d("상품아이디", productId.toString())
-            myIntent.putExtra("product_id", productId)
-            mContext.startActivity(myIntent)
-        }
-    }
 
 
 

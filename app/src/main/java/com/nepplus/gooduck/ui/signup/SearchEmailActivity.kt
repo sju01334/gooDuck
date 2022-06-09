@@ -26,6 +26,7 @@ class SearchEmailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
         binding.backBtn.setOnClickListener {
             finish()
         }

@@ -27,6 +27,7 @@ class SearchPasswordActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
         binding.backBtn.setOnClickListener {
             finish()
         }

@@ -40,10 +40,10 @@ class ReviewFragment  : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+       Log.d("리뷰개수33", reviewSize.toString())
         setupEvents()
+        Log.d("리뷰개수44", reviewSize.toString())
         setValues()
-
-
     }
 
     override fun onResume() {
@@ -93,7 +93,7 @@ class ReviewFragment  : BaseFragment(){
     }
 
     fun initAdapters(){
-        mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList, 0)
+        mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
         binding.reviewRecyclerView.adapter = mReviewAdapter
         binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
 

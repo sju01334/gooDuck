@@ -37,9 +37,6 @@ class CartActivity : BaseActivity () {
     }
 
     override fun setupEvents() {
-        backBtn.setOnClickListener {
-            finish()
-        }
         
         mDetailAdapter.setItemClickListener(object : MarketDetailRecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {

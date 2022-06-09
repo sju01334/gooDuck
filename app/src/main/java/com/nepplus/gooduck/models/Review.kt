@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Review (
     val id : Int,
@@ -21,5 +22,5 @@ data class Review (
     val product : Product,
     val tags : List<Tag>
 
-        ){
+        ) : Serializable{
 }

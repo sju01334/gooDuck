@@ -3,6 +3,7 @@ package com.nepplus.gooduck
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -25,6 +26,8 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var bagBtn : ImageView
     lateinit var sideBarBtn : ImageView
     lateinit var backBtn : ImageView
+
+    lateinit var background : FrameLayout
 
 
 
@@ -57,6 +60,7 @@ abstract class BaseActivity : AppCompatActivity() {
         bagBtn = defActionBar.customView.findViewById(R.id.bagBtn)
         sideBarBtn = defActionBar.customView.findViewById(R.id.sideBarBtn)
         backBtn = defActionBar.customView.findViewById(R.id.backBtn)
+        background = defActionBar.customView.findViewById(R.id.background)
 
         bagBtn.setOnClickListener {
             val myInent = Intent(mContext, CartActivity::class.java)
