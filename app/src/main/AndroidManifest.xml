@@ -16,10 +16,15 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.market.ReviewDetailActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".ui.market.ReviewAddActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+
+        </activity>
         <activity
             android:name=".ui.market.ReviewItemActivity"
             android:exported="false" />

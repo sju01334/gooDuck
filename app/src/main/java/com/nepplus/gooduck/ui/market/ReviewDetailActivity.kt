@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.ui.market
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
@@ -15,6 +16,7 @@ class ReviewDetailActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_review_detail)
         setupEvents()
         setValues()
+
     }
 
     override fun setupEvents() {

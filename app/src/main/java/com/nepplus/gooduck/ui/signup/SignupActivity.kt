@@ -72,13 +72,13 @@ class SignupActivity : BaseActivity() {
         binding.emailEdt.addTextChangedListener {
             isEmailDupOk = false
             binding.emailDupBtn.isClickable = true
-            binding.emailDupBtn.setBackgroundColor(getColor(R.color.primary))
+            binding.emailDupBtn.setBackgroundResource(R.drawable.r5_yellow_fill)
         }
 
         binding.nicknameEdt.addTextChangedListener {
             isNickDupOk = false
             binding.nickDupBtn.isClickable = true
-            binding.nickDupBtn.setBackgroundColor(getColor(R.color.primary))
+            binding.nickDupBtn.setBackgroundResource(R.drawable.r5_yellow_fill)
         }
 
         binding.passwordEdt.addTextChangedListener {
@@ -148,13 +148,13 @@ class SignupActivity : BaseActivity() {
                     when (type) {
                         "EMAIL" -> {
                             isEmailDupOk = true
-                            binding.emailDupBtn.setBackgroundColor(getColor(R.color.black_55))
+                            binding.emailDupBtn.setBackgroundResource(R.drawable.r5_lightgray_stroke_1dp)
                             binding.emailDupBtn.isClickable = false
 
                         }
                         "NICK_NAME" -> {
                             isNickDupOk = true
-                            binding.nickDupBtn.setBackgroundColor(getColor(R.color.black_55))
+                            binding.nickDupBtn.setBackgroundResource(R.drawable.r5_lightgray_stroke_1dp)
                             binding.nickDupBtn.isClickable = false
                         }
 
@@ -169,13 +169,13 @@ class SignupActivity : BaseActivity() {
                     when (type) {
                         "EMAIL" -> {
                             binding.emailDupBtn.isClickable = true
-                            binding.emailDupBtn.setBackgroundColor(getColor(R.color.primary))
+                            binding.emailDupBtn.setBackgroundResource(R.drawable.r5_yellow_fill)
                             isEmailDupOk = false
 
                         }
                         "NICK_NAME" -> {
                             binding.nickDupBtn.isClickable = true
-                            binding.nickDupBtn.setBackgroundColor(getColor(R.color.primary))
+                            binding.nickDupBtn.setBackgroundResource(R.drawable.r5_yellow_fill)
                             isNickDupOk = false
                         }
                     }

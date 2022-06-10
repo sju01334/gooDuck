@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.api
 
 import com.nepplus.gooduck.models.BasicResponse
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -84,5 +85,17 @@ interface APIList {
     //  review
     @GET("/review")
     fun getRequestAllReview() : Call<BasicResponse>
+
+    @Multipart
+    @FormUrlEncoded
+    @POST("/review")
+    fun postRequestAddReview(
+        @Field("product_id") productId: Int,
+        @Field("title") title : String,
+        @Field("content") content : String,
+        @Field("score") score : Float,
+        @Field("tag_list") tags : String,
+        @Part("thumbnail_img") img: MultipartBody.Part
+    ) : Call<BasicResponse>
 
 }

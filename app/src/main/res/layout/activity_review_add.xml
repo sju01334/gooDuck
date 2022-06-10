@@ -96,6 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:hint="제목을 입력하세요"/>
 
@@ -111,12 +112,13 @@
                     <EditText
                         android:id="@+id/reviewContentEdt"
                         android:layout_width="match_parent"
+                        android:inputType="text"
                         android:layout_height="200dp"
-                        android:gravity="top"
                         android:layout_marginBottom="15dp"
-                        android:padding="10dp"
                         android:background="@drawable/r5_lightgray_stroke_1dp"
-                        android:hint="최소 10자이상 입려해주세요"/>
+                        android:gravity="top"
+                        android:hint="최소 10자이상 입려해주세요"
+                        android:padding="10dp" />
 
                     <ImageView
                         android:id="@+id/image"
@@ -129,18 +131,17 @@
                         android:id="@+id/addImageBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:strokeColor="@color/mediumGray"
-                        app:strokeWidth="1dp"
-                        app:cornerRadius="5dp"
-                        android:padding="13dp"
+                        android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/resize_plus"
                         android:drawableTint="@color/secondary"
+                        android:padding="13dp"
+                        android:text="사진 추가하기"
+                        android:textColor="@color/mediumGray"
+                        app:cornerRadius="5dp"
                         app:icon="@drawable/resize_plus"
                         app:iconTint="@color/mediumGray"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@color/mediumGray"
-                        android:text="사진 추가하기"/>
-
+                        app:strokeColor="@color/mediumGray"
+                        app:strokeWidth="1dp" />
 
 
                 </LinearLayout>
@@ -173,11 +174,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:layout_weight="1"
-                            android:hint="제목을 입력하세요"
+                            android:inputType="text"
+                            android:hint="태그를 입력하세요"
                             android:maxLines="1" />
 
                         <Button
-                            android:id="@+id/addReviewBtn"
+                            android:id="@+id/addTagBtn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -189,11 +191,11 @@
                             app:strokeColor="@color/mediumGray" />
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/tagListLayout"
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"/>
+                        android:layout_marginTop="20dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
