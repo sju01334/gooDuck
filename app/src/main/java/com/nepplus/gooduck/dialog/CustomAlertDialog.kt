@@ -6,17 +6,18 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
+import android.view.LayoutInflater
 import android.view.Window
 import android.widget.LinearLayout
 import com.nepplus.gooduck.databinding.CustomAlertDialogBinding
 
-class CustomAlertDialog(val mContext : Context, val activity : Activity) {
+class CustomAlertDialog(val mContext : Context) {
 
     val dialog = Dialog(mContext)
     lateinit var binding : CustomAlertDialogBinding
 
     fun myDialog(onClickListener : ButtonClickListener) {
-        binding = CustomAlertDialogBinding.inflate(activity.layoutInflater)
+        binding = CustomAlertDialogBinding.inflate(LayoutInflater.from(mContext))
         dialog.setContentView(binding.root)
 
         dialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)

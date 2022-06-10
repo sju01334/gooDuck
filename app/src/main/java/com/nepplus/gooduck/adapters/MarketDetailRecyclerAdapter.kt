@@ -6,25 +6,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
-import com.nepplus.gooduck.databinding.ListItemDetailBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Cart
 import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.ui.market.CartActivity
-import com.nepplus.gooduck.ui.market.ReviewActivity
+import com.nepplus.gooduck.ui.market.ReviewItemActivity
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 
 class MarketDetailRecyclerAdapter(
@@ -35,21 +36,29 @@ class MarketDetailRecyclerAdapter(
 ) : RecyclerView.Adapter<MarketDetailRecyclerAdapter.ItemViewHolder>() {
 
     private lateinit var itemClickListener : OnItemClickListener
-    lateinit var binding: ListItemDetailBinding
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val name = itemView.findViewById<TextView>(R.id.name)
+        val price = itemView.findViewById<TextView>(R.id.price)
+        val originalPrice = itemView.findViewById<TextView>(R.id.originalPrice)
+        val image = itemView.findViewById<ImageView>(R.id.image)
+        val addCartBtn = itemView.findViewById<CardView>(R.id.addCartBtn)
+        val reviewBtn = itemView.findViewById<Button>(R.id.reviewBtn)
+        val deleteBtn = itemView.findViewById<TextView>(R.id.deleteBtn)
+        val buyBtn = itemView.findViewById<Button>(R.id.buyBtn)
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
 
         fun bind(item: Product) {
 
-            binding.name.text = item.name
-            binding.price.text = "${item.price}원"
-            binding.originalPrice.text = "${item.price * 1.3}원"
-            Glide.with(mContext).load(item.imageUrl).fitCenter().into(binding.image)
+            name.text = item.name
+            price.text = "${item.price}원"
+            originalPrice.text = "${item.price * 1.3}원"
+            Glide.with(mContext).load(item.imageUrl).fitCenter().into(image)
 
 
-            binding.addCartBtn.setOnClickListener {
+            addCartBtn.setOnClickListener {
                 apiList.postRequestAddCart(item.id).enqueue(object : Callback<BasicResponse>{
                     override fun onResponse(
                         call: Call<BasicResponse>,
@@ -77,8 +86,8 @@ class MarketDetailRecyclerAdapter(
 
             }
 
-            binding.reviewBtn.setOnClickListener {
-                val myIntent = Intent(mContext, ReviewActivity::class.java)
+            reviewBtn.setOnClickListener {
+                val myIntent = Intent(mContext, ReviewItemActivity::class.java)
                 myIntent.putExtra("product", item)
                 mContext.startActivity(myIntent)
             }
@@ -88,17 +97,17 @@ class MarketDetailRecyclerAdapter(
 
         fun bindCart(item : Cart){
 
-            binding.name.text = item.product.name
-            binding.price.text = "${item.product.price}원"
-            binding.originalPrice.text = "${item.product.price * 1.3}원"
-            Glide.with(mContext).load(item.product.imageUrl).fitCenter().into(binding.image)
+            name.text = item.product.name
+            price.text = "${item.product.price}원"
+            originalPrice.text = "${item.product.price * 1.3}원"
+            Glide.with(mContext).load(item.product.imageUrl).fitCenter().into(image)
 
-            binding.addCartBtn.visibility = View.GONE
-            binding.deleteBtn.visibility = View.VISIBLE
+            addCartBtn.visibility = View.GONE
+            deleteBtn.visibility = View.VISIBLE
 
-            binding.deleteBtn.setOnClickListener {
+            deleteBtn.setOnClickListener {
 
-                val alert = CustomAlertDialog(mContext, mContext as CartActivity)
+                val alert = CustomAlertDialog(mContext)
                 alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
                     override fun positiveBtnClicked() {
                         apiList.deleteRequestMyCartProduct(item.product.id).enqueue(object : Callback<BasicResponse>{
@@ -145,8 +154,8 @@ class MarketDetailRecyclerAdapter(
 
             }
 
-            binding.reviewBtn.setOnClickListener {
-                val myIntent = Intent(mContext, ReviewActivity::class.java)
+            reviewBtn.setOnClickListener {
+                val myIntent = Intent(mContext, ReviewItemActivity::class.java)
                 myIntent.putExtra("product", item.product)
                 mContext.startActivity(myIntent)
             }
@@ -155,8 +164,8 @@ class MarketDetailRecyclerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.list_item_detail, parent, false)
-        return ItemViewHolder(binding.root)
+        val row = LayoutInflater.from(mContext).inflate(R.layout.list_item_detail, parent, false)
+        return ItemViewHolder(row)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

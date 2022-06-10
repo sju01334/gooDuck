@@ -1,6 +1,5 @@
 package com.nepplus.gooduck.ui.market
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
-import com.nepplus.gooduck.databinding.ActivityReviewBinding
+import com.nepplus.gooduck.databinding.ActivityReviewItemBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.models.Review
@@ -18,9 +17,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ReviewActivity : BaseActivity() {
+class ReviewItemActivity : BaseActivity() {
 
-    lateinit var binding : ActivityReviewBinding
+    lateinit var binding : ActivityReviewItemBinding
     lateinit var mProduct : Product
     lateinit var mReviewAdapter : ReviewRecyclerAdapter
 
@@ -30,7 +29,7 @@ class ReviewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_review)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_review_item)
 
         mProduct = intent.getSerializableExtra("product") as Product
         productId = mProduct.id
@@ -52,7 +51,6 @@ class ReviewActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "${mProduct.name} 리뷰"
-        subTitleTxt.setTextSize(Dimension.SP, 18F)
 
         background.setBackgroundColor(getColor(R.color.secondary))
 
