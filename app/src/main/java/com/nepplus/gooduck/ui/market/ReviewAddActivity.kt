@@ -51,7 +51,7 @@ class ReviewAddActivity : BaseActivity() {
         subTitleTxt.text = "리뷰 등록"
 
 
-        val categoryAdapter =ArrayAdapter(mContext, R.layout.item_spinner, mCategoryList)
+        val categoryAdapter =ArrayAdapter(mContext, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, mCategoryList)
         binding.categorySpinner.adapter = categoryAdapter
 
         binding.categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
