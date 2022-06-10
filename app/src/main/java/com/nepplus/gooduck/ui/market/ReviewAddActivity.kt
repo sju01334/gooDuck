@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.ui.market
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -55,7 +56,8 @@ class ReviewAddActivity : BaseActivity() {
 
         binding.categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
-                Toast.makeText(mContext, "위치 ${position}, 아이디? ${id}", Toast.LENGTH_SHORT).show()
+                Log.d("선택된거", position.toString())
+
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
