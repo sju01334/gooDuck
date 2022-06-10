@@ -54,16 +54,6 @@ class ReviewItemActivity : BaseActivity() {
 
         background.setBackgroundColor(getColor(R.color.secondary))
 
-        //        Log.d("리뷰개수22", reviewSize.toString())
-//
-//        if(reviewSize == 0){
-//            binding.emptyLayout.visibility = View.VISIBLE
-//            binding.reviewRecyclerView.visibility = View.GONE
-//        }else{
-//            binding.emptyLayout.visibility = View.GONE
-//            binding.reviewRecyclerView.visibility = View.VISIBLE
-//        }
-
         mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
         binding.reviewRecyclerView.adapter = mReviewAdapter
         binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
@@ -86,6 +76,7 @@ class ReviewItemActivity : BaseActivity() {
                 Log.d("호출 실패", t.toString())}
         })
     }
+
 
 
 

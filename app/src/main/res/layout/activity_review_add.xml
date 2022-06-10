@@ -7,174 +7,194 @@
         android:layout_height="match_parent"
         android:background="@color/secondary"
         tools:context=".ui.market.ReviewAddActivity">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="20dp"
-                android:layout_marginBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="상품"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="5dp"
-                    android:text="별점"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-
-                <com.willy.ratingbar.ScaleRatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp"
-                    app:srb_isIndicator="false"
-                    app:srb_starHeight="20dp"
-                    app:srb_starWidth="20dp"
-                    app:srb_starPadding="5dp"
-                    app:srb_stepSize="0.5" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
-                    android:text="리뷰 제목"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:maxLines="1"
-                    android:hint="제목을 입력하세요"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
-                    android:text="리뷰 내용"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:gravity="top"
-                    android:layout_marginBottom="15dp"
-                    android:padding="5dp"
-                    android:background="@drawable/r5_lightgray_rectangle"
-                    android:hint="최소 10자이상 입려해주세요"/>
-
-                <Button
-                    android:id="@+id/addPictureBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:strokeColor="@color/mediumGray"
-                    app:strokeWidth="1dp"
-                    app:cornerRadius="5dp"
-                    android:padding="13dp"
-                    android:drawableLeft="@drawable/resize_plus"
-                    android:drawableTint="@color/secondary"
-                    app:icon="@drawable/resize_plus"
-                    app:iconTint="@color/mediumGray"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/mediumGray"
-                    android:text="사진 추가하기"/>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:layout_marginBottom="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
-                    android:text="태그"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="20dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="카테고리"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                    <Spinner
+                        android:id="@+id/categorySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="상품"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                    <Spinner
+                        android:id="@+id/itemSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="5dp"
+                        android:text="별점"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <com.willy.ratingbar.ScaleRatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:srb_isIndicator="false"
+                        app:srb_starHeight="20dp"
+                        app:srb_starPadding="5dp"
+                        app:srb_starWidth="20dp"
+                        app:srb_stepSize="0.5" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:text="리뷰 제목"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
                     <EditText
-                        android:layout_width="0dp"
+                        android:id="@+id/reviewTitleEdt"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="10dp"
                         android:maxLines="1"
                         android:hint="제목을 입력하세요"/>
 
-                    <Button
-                        android:id="@+id/addReviewBtn"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="추가"
-                        android:textColor="@color/mediumGray"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:text="리뷰 내용"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/reviewContentEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="top"
+                        android:layout_marginBottom="15dp"
+                        android:padding="10dp"
+                        android:background="@drawable/r5_lightgray_stroke_1dp"
+                        android:hint="최소 10자이상 입려해주세요"/>
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"/>
+
+                    <Button
+                        android:id="@+id/addImageBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:strokeColor="@color/mediumGray"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="5dp"
+                        android:padding="13dp"
+                        android:drawableLeft="@drawable/resize_plus"
+                        android:drawableTint="@color/secondary"
                         app:icon="@drawable/resize_plus"
                         app:iconTint="@color/mediumGray"
-                        app:strokeColor="@color/mediumGray" />
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/mediumGray"
+                        android:text="사진 추가하기"/>
+
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="70dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="태그"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/tagEdt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            android:hint="제목을 입력하세요"
+                            android:maxLines="1" />
+
+                        <Button
+                            android:id="@+id/addReviewBtn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="추가"
+                            android:textColor="@color/mediumGray"
+                            app:icon="@drawable/resize_plus"
+                            app:iconTint="@color/mediumGray"
+                            app:strokeColor="@color/mediumGray" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/tagListLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"/>
                 </LinearLayout>
-
-
             </LinearLayout>
-
-
-        </LinearLayout>
-
+        </ScrollView>
         <Button
             android:id="@+id/addReview"
             android:layout_width="match_parent"
@@ -186,6 +206,5 @@
             android:text="등록하기"
             android:textSize="@dimen/buttonTxt"
             app:cornerRadius="50dp" />
-
     </FrameLayout>
 </layout>

@@ -1,5 +1,6 @@
 package com.nepplus.gooduck.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
 import com.nepplus.gooduck.databinding.FragmentReviewBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Review
+import com.nepplus.gooduck.ui.market.ReviewAddActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,20 +55,14 @@ class ReviewFragment  : BaseFragment(){
 
     override fun setupEvents() {
 
+        binding.faBtn.setOnClickListener {
+            val myIntent = Intent(mContext , ReviewAddActivity::class.java)
+            startActivity(myIntent)
+        }
+
     }
 
     override fun setValues() {
-
-//        Log.d("리뷰개수22", reviewSize.toString())
-//
-//        if(reviewSize == 0){
-//            binding.emptyLayout.visibility = View.VISIBLE
-//            binding.reviewRecyclerView.visibility = View.GONE
-//        }else{
-//            binding.emptyLayout.visibility = View.GONE
-//            binding.reviewRecyclerView.visibility = View.VISIBLE
-//        }
-
 
     }
 
@@ -79,13 +75,19 @@ class ReviewFragment  : BaseFragment(){
                     Log.d("리뷰개수", reviewSize.toString())
 
                     if(reviewSize > 0 ){
-
+                        binding.emptyLayout.visibility = View.GONE
+                        binding.reviewRecyclerView.visibility = View.VISIBLE
                         if(reviewSize != 0){
                             mReviewList.clear()
                         }
                         mReviewList.addAll(br.data.reviews)
                         initAdapters()
                     }
+                    else {
+                        binding.emptyLayout.visibility = View.VISIBLE
+                        binding.reviewRecyclerView.visibility = View.GONE
+                    }
+
                 }
             }
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {Log.d("호출 실패", t.toString())}
