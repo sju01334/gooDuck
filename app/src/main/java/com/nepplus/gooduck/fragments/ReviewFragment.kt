@@ -6,17 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.R
-import com.nepplus.gooduck.adapters.MarketRecyclerAdapter
 import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
 import com.nepplus.gooduck.databinding.FragmentReviewBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Review
 import com.nepplus.gooduck.ui.market.ReviewAddActivity
+import com.nepplus.gooduck.ui.market.ReviewDetailActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +50,7 @@ class ReviewFragment  : BaseFragment(){
     override fun onResume() {
         super.onResume()
         getAllReviewList()
+
     }
 
     override fun setupEvents() {
@@ -72,8 +72,9 @@ class ReviewFragment  : BaseFragment(){
                 if(response.isSuccessful){
                     val br = response.body()!!
                     reviewSize = br.data.reviews.size
-                    Log.d("리뷰개수", reviewSize.toString())
+//                    Log.d("리뷰개수", reviewSize.toString())
 
+                    binding.reviewCnt.text = "${reviewSize}개의 리뷰"
                     if(reviewSize > 0 ){
                         binding.emptyLayout.visibility = View.GONE
                         binding.reviewRecyclerView.visibility = View.VISIBLE
@@ -100,5 +101,14 @@ class ReviewFragment  : BaseFragment(){
         binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
 
         mReviewAdapter.notifyDataSetChanged()
+
+        mReviewAdapter.setItemClickListener(object : ReviewRecyclerAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val myIntent = Intent(mContext, ReviewDetailActivity::class.java)
+                myIntent.putExtra("review", mReviewList[position])
+                startActivity(myIntent)
+//                Toast.makeText(mContext, "${position}번쨰 선택", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

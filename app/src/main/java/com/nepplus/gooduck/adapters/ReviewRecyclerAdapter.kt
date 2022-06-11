@@ -6,10 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +24,7 @@ class ReviewRecyclerAdapter(
     val mList: List<Review>
 ) : RecyclerView.Adapter<ReviewRecyclerAdapter.ItemViewHolder>() {
 
+    private lateinit var itemClickListener : OnItemClickListener
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -60,11 +58,22 @@ class ReviewRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(mList[position])
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int {
         return mList.size
     }
+
+    interface OnItemClickListener{fun onClick(v : View , position: Int)}
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener){
+        this.itemClickListener = onItemClickListener
+    }
+
+
 
 
 

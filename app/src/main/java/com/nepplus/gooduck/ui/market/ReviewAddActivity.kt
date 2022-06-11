@@ -10,7 +10,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
@@ -116,7 +115,7 @@ class ReviewAddActivity : BaseActivity() {
             val content = binding.reviewContentEdt.text.toString()
 
             if (title.isEmpty()){
-                Toast.makeText(mContext, "제목을 입려하세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, "제목을 입력하세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if(content.isEmpty()){
@@ -127,6 +126,13 @@ class ReviewAddActivity : BaseActivity() {
                 Toast.makeText(mContext, "태그를 1개이상 입력하세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            Log.d("아이디", selectedProduct.id.toString())
+            Log.d("11", title)
+            Log.d("22", content)
+            Log.d("33", binding.ratingBar.rating.toString())
+            Log.d("44", tagList)
+            Log.d("55", pic.toString())
 
             apiList.postRequestAddReview(
                 selectedProduct.id,
@@ -148,7 +154,9 @@ class ReviewAddActivity : BaseActivity() {
                         val jsonObj = JSONObject(errorBodyStr)
                         val code = jsonObj.getInt("code")
                         val message = jsonObj.getString("message")
-                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                        if(code == 400){
+                            Log.d("리뷰등록 실패_error",message)
+                        }
                     }
 
                 }

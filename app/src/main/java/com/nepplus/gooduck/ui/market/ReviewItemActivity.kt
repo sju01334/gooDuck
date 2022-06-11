@@ -1,5 +1,6 @@
 package com.nepplus.gooduck.ui.market
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -57,6 +58,14 @@ class ReviewItemActivity : BaseActivity() {
         mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
         binding.reviewRecyclerView.adapter = mReviewAdapter
         binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
+
+        mReviewAdapter.setItemClickListener(object : ReviewRecyclerAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val myIntent = Intent(mContext, ReviewDetailActivity::class.java)
+                myIntent.putExtra("review", mReviewList[position])
+                startActivity(myIntent)
+            }
+        })
     }
 
     fun getAllReviewList(){
