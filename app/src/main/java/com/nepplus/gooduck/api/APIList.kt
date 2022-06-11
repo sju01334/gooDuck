@@ -28,11 +28,22 @@ interface APIList {
         @Field("phone") phone: String,
     ): Call<BasicResponse>
 
+    @FormUrlEncoded
+    @PATCH("/user")
+    fun patchRequestEditUserInfo(
+        @Field("field") field: String,
+        @Field("value") value: String
+    ): Call<BasicResponse>
+
     @GET("/user/check")
     fun getRequestUserCheck(
         @Query("type") type: String,
         @Query("value") value: String
     ): Call<BasicResponse>
+
+    @Multipart
+    @PUT("/user/image")
+    fun putRequestUserImage(@Part profileImg: MultipartBody.Part): Call<BasicResponse>
 
     @GET("/user/find/email")
     fun getReqeustFindId(

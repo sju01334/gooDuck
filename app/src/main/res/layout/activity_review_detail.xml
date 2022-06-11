@@ -59,8 +59,8 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/socialImg"
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_marginLeft="5dp"
                                 android:src="@mipmap/ic_launcher_round"
                                 android:visibility="gone" />
@@ -186,7 +186,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/r5_black_stroke_1dp"
-                        android:inputType="text"
                         android:padding="5dp" />
 
                     <TextView
