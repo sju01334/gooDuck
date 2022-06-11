@@ -49,8 +49,6 @@ class ReviewDetailActivity : BaseActivity() {
                 Toast.makeText(mContext, "댓글을 입력해주세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            Log.d("리뷰 아이디", mReveiw.id.toString())
-            Log.d("댓글", binding.replyEdt.text.toString())
 
             apiList.postRequestAddReply(mReveiw.id, binding.replyEdt.text.toString()).enqueue(object : Callback<BasicResponse>{
                 override fun onResponse(
@@ -59,13 +57,13 @@ class ReviewDetailActivity : BaseActivity() {
                 ) {
                     if(response.isSuccessful){
                         val br = response.body()!!
-                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                        binding.replyEdt.text.clear()
                         binding.replyRecyclerView.visibility = View.VISIBLE
                         getReplyList()
                     }
                 }
                 override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-
                 }
             })
         }
