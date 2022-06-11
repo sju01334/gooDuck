@@ -186,6 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/r5_black_stroke_1dp"
+                        android:inputType="text"
                         android:padding="5dp" />
 
                     <TextView

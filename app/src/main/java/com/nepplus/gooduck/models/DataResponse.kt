@@ -9,6 +9,7 @@ data class DataResponse(
     val categories : List<Category>,
     val products : List<Product>,
     val carts : List<Cart>,
-    val reviews : List<Review>
+    val reviews : List<Review>,
+    val replies : List<Reply>
 ): Serializable {
 }

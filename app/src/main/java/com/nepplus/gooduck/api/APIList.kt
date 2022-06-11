@@ -98,4 +98,11 @@ interface APIList {
         @Part("thumbnail_img") img: MultipartBody.Part
     ) : Call<BasicResponse>
 
+    @GET("/review/{review_id}/reply")
+    fun getRequestReviewReply(@Path("review_id") id : Int) : Call<BasicResponse>
+
+    @FormUrlEncoded
+    @POST("/review/{review_id}/reply")
+    fun postRequestAddReply(@Path("review_id") id : Int, @Field("content") content : String) : Call<BasicResponse>
+
 }

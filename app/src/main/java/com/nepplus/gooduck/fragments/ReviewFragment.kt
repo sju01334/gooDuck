@@ -41,9 +41,9 @@ class ReviewFragment  : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       Log.d("리뷰개수33", reviewSize.toString())
+
         setupEvents()
-        Log.d("리뷰개수44", reviewSize.toString())
+
         setValues()
     }
 
