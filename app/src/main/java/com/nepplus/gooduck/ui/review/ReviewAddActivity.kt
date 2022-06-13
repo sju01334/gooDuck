@@ -127,21 +127,21 @@ class ReviewAddActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
-            Log.d("아이디", selectedProduct.id.toString())
-            Log.d("11", title)
-            Log.d("22", content)
-            Log.d("33", binding.ratingBar.rating.toString())
-            Log.d("44", tagList)
-            Log.d("55", pic.toString())
+
+            val id_multi = MultipartBody.Part.createFormData("product_id", selectedProduct.id.toString())
+            val title_multi = MultipartBody.Part.createFormData("title", title)
+            val content_multi = MultipartBody.Part.createFormData("content", content)
+            val rating_multi = MultipartBody.Part.createFormData("score", binding.ratingBar.rating.toString())
+            val tags_multi = MultipartBody.Part.createFormData("tag_list", tagList)
 
 
             apiList.postRequestAddReview(
-                selectedProduct.id,
-                title,
-                content,
-                binding.ratingBar.rating,
-                tagList,
-                pic!!
+                id_multi,
+                title_multi,
+                content_multi,
+                rating_multi,
+                tags_multi,
+                pic
             ).enqueue(object : Callback<BasicResponse>{
                 override fun onResponse(
                     call: Call<BasicResponse>,
@@ -178,7 +178,6 @@ class ReviewAddActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "리뷰 등록"
-        background.setBackgroundColor(getColor(R.color.secondary))
 
 
     }

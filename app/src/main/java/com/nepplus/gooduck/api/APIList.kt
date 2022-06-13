@@ -12,6 +12,9 @@ interface APIList {
     @GET("/user")
     fun getRequestMyInfo(): Call<BasicResponse>
 
+    @DELETE("/user")
+    fun deleteRequestUser(@Query("text") text : String): Call<BasicResponse>
+
     @FormUrlEncoded
     @POST("/user")
     fun postRequestLogin(
@@ -114,15 +117,14 @@ interface APIList {
     fun getRequestAllReview() : Call<BasicResponse>
 
     @Multipart
-    @FormUrlEncoded
     @POST("/review")
     fun postRequestAddReview(
-        @Field("product_id") productId: Int,
-        @Field("title") title : String,
-        @Field("content") content : String,
-        @Field("score") score : Float,
-        @Field("tag_list") tags : String,
-        @Part("thumbnail_img") img: MultipartBody.Part
+        @Part("product_id") productId: MultipartBody.Part,
+        @Part("title") title : MultipartBody.Part,
+        @Part("content") content : MultipartBody.Part,
+        @Part("score") score : MultipartBody.Part,
+        @Part("tag_list") tags : MultipartBody.Part,
+        @Part("thumbnail_img") img: MultipartBody.Part?
     ) : Call<BasicResponse>
 
     @GET("/review/{review_id}/reply")

@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -152,7 +153,7 @@ class SettingFragment  : BaseFragment(){
 
         //        로그아웃
         binding.logoutBtn.setOnClickListener {
-            val alert = CustomAlertDialog(mContext,)
+            val alert = CustomAlertDialog(mContext)
             alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
                 override fun positiveBtnClicked() {
                     ContextUtil.clear(mContext)
@@ -181,6 +182,53 @@ class SettingFragment  : BaseFragment(){
             val myIntent = Intent(mContext, MyReviewListActivity::class.java)
             startActivity(myIntent)
         }
+
+        binding.byebyeBtn.setOnClickListener{
+            val alert = CustomAlertDialog(mContext)
+            alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                override fun positiveBtnClicked() {
+                    val text = alert.binding.contentEdt1.text.toString()
+                    if(text.isEmpty()){
+                        Toast.makeText(mContext, "빈칸을 입력해주세요", Toast.LENGTH_SHORT).show()
+                    }else {
+                        apiList.deleteRequestUser(text).enqueue(object : Callback<BasicResponse>{
+                            override fun onResponse(
+                                call: Call<BasicResponse>,
+                                response: Response<BasicResponse>
+                            ) {
+                                if(response.isSuccessful){
+                                    val br = response.body()!!
+                                    Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                                    ContextUtil.clear(mContext)
+                                    GlobalData.loginUser = null
+                                    val myIntent = Intent(mContext, LoginActivity::class.java)
+                                    myIntent.flags =
+                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(myIntent)
+                                }else{
+                                    val errorBody =response.errorBody()!!.string()
+                                    val jsonObj = JSONObject(errorBody)
+                                    val code = jsonObj.getInt("code")
+                                    val message = jsonObj.getString("message")
+                                    if(code == 400){
+                                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
+                            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                            }
+                        })
+                    }
+
+                }
+                override fun negativeBtnClicked() {
+                }
+            })
+            alert.binding.titleTxt.text = "회원 탈퇴"
+            alert.binding.bodyTxt.text = "정말 탈퇴 하시겠습니까 ?\n탈퇴를 원하시면 '동의'라고 적어주세요"
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+            
+        }
     }
 
     override fun setValues() {
@@ -196,6 +244,9 @@ class SettingFragment  : BaseFragment(){
     }
 
     fun setUserData() {
+
+        Log.d("SettingFragment_이미지 없니?",GlobalData.loginUser!!.profileImg)
+
         Glide.with(mContext)
             .load(GlobalData.loginUser!!.profileImg)
             .into(binding.profileImg)
