@@ -130,6 +130,7 @@ class MarketDetailRecyclerAdapter(
                                 }
 
                                 (mContext as CartActivity).getProductData()
+                                alert.dialog.dismiss()
 
                             }
 

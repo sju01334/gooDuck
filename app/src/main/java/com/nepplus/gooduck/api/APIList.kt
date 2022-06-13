@@ -35,13 +35,14 @@ interface APIList {
     @PATCH("/user")
     fun patchRequestEditUserInfo(
         @Field("field") field: String,
-        @Field("value") value: String
+        @Field("value") value: String,
+        @Field("current_password") password: String? = null
     ): Call<BasicResponse>
 
     @GET("/user/check")
     fun getRequestUserCheck(
         @Query("type") type: String,
-        @Query("value") value: String
+        @Query("value") value: String,
     ): Call<BasicResponse>
 
     @Multipart

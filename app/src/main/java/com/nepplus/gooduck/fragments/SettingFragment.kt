@@ -79,13 +79,30 @@ class SettingFragment  : BaseFragment(){
             override fun onClick(p0: View?) {
                 val type = p0!!.tag.toString()
 
+
                 val alert = CustomAlertDialog(mContext)
 
                 alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
                     override fun positiveBtnClicked() {
                         val changedEdt = alert.binding.contentEdt1.text.toString()
 
-                        apiList.patchRequestEditUserInfo(type, changedEdt)
+                        if(alert.binding.contentEdt1.text.toString().isEmpty()){
+                            Toast.makeText(mContext, "빈칸을 입력하세요", Toast.LENGTH_SHORT).show()
+                            return
+                        }
+
+                        var password: String? = null
+
+                        if( type == "password"){
+                            password = alert.binding.contentEdt2.text.toString()
+
+                            if(password == null){
+                                Toast.makeText(mContext, "빈칸을 입력하세요", Toast.LENGTH_SHORT).show()
+                                return
+                            }
+                        }
+
+                        apiList.patchRequestEditUserInfo(type, changedEdt, password)
                             .enqueue(object : Callback<BasicResponse> {
                                 override fun onResponse(
                                     call: Call<BasicResponse>,
@@ -103,6 +120,7 @@ class SettingFragment  : BaseFragment(){
                                         val message = jsonObj.getString("message")
                                         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                                     }
+                                    alert.dialog.dismiss()
                                 }
 
                                 override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
@@ -114,6 +132,8 @@ class SettingFragment  : BaseFragment(){
                 })
 
                 alert.binding.bodyTxt.visibility = View.GONE
+
+
 
                 when (type) {
                     "nickname" -> {
@@ -128,11 +148,17 @@ class SettingFragment  : BaseFragment(){
                     }
                     "password" -> {
                         alert.binding.titleTxt.text = "비밀번호 변경"
-                        alert.binding.contentEdt1.hint = "현재 비밀번호를 입력하세요"
+                        alert.binding.contentEdt1.hint = "변경할 비밀번호를 입력하세요"
                         alert.binding.contentEdt1.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
                         alert.binding.contentEdt2.visibility = View.VISIBLE
-                        alert.binding.contentEdt2.hint = "변경할 비밀번호를 입력하세요"
+                        alert.binding.contentEdt2.hint = "현재 비밀번호를 입력하세요"
                         alert.binding.contentEdt2.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+                        if(alert.binding.contentEdt2.text.toString().isEmpty()){
+                            Toast.makeText(mContext, "빈칸을 입력하세요", Toast.LENGTH_SHORT).show()
+                            return
+                        }
+
                     }
                     "phone" -> {
                         alert.binding.titleTxt.text = "전화번호 변경"
@@ -151,12 +177,14 @@ class SettingFragment  : BaseFragment(){
         binding.changeNickLayout.setOnClickListener(ocl)
         binding.changeEmailLayout.setOnClickListener(ocl)
         binding.changePhoneLayout.setOnClickListener(ocl)
+        binding.changePwLayout.setOnClickListener(ocl)
 
         //        로그아웃
         binding.logoutBtn.setOnClickListener {
             val alert = CustomAlertDialog(mContext)
             alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
                 override fun positiveBtnClicked() {
+                    alert.dialog.dismiss()
                     ContextUtil.clear(mContext)
                     GlobalData.loginUser = null
                     val myIntent = Intent(mContext, LoginActivity::class.java)
@@ -215,6 +243,7 @@ class SettingFragment  : BaseFragment(){
                                         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                                     }
                                 }
+                                alert.dialog.dismiss()
                             }
                             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
                             }
