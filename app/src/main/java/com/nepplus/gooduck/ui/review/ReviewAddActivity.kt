@@ -59,7 +59,6 @@ class ReviewAddActivity : BaseActivity() {
         binding.addImageBtn.setOnClickListener {
             val pl = object : PermissionListener {
                 override fun onPermissionGranted() {
-//            갤러리로 사진 가지러 이동(추가작업) => Intent(4)
                     val myIntent = Intent()
                     myIntent.action = Intent.ACTION_PICK
                     myIntent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
@@ -73,6 +72,14 @@ class ReviewAddActivity : BaseActivity() {
                 .setPermissionListener(pl)
                 .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .check()
+        }
+
+        binding.deleteImgBtn.setOnClickListener {
+            pic = null
+            binding.deleteImgBtn.visibility = View.GONE
+            binding.addImageBtn.visibility = View.VISIBLE
+            binding.image.visibility = View.GONE
+            binding.imageTxt.visibility = View.GONE
         }
 
 
@@ -245,7 +252,7 @@ class ReviewAddActivity : BaseActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
 
-                binding.image.visibility = View.VISIBLE
+
 //            어떤 사진을 골랐는지? 파악해보자
 //            임시 : 고른 사진을 profileImg 에 바로 적용만(서버전송 X)
 
@@ -255,6 +262,10 @@ class ReviewAddActivity : BaseActivity() {
 
 //            URi => 이미지 뷰의 사진(Glide)
                 Glide.with(mContext).load(dataUri).into(binding.image)
+                binding.addImageBtn.visibility = View.GONE
+                binding.imageTxt.visibility = View.VISIBLE
+                binding.deleteImgBtn.visibility = View.VISIBLE
+                binding.image.visibility = View.VISIBLE
 
 //            API 서버에 사지을 전송 => PUT  메쏘드 + ("/user/image")
 //            파일을 같이 첨부 => Multipart 형식의 데이터 첨부 활용

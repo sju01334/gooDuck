@@ -105,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="10dp"
                         android:textSize="16sp"
                         android:text="리뷰 내용"
                         android:textColor="@color/black"
@@ -122,6 +122,16 @@
                         android:hint="최소 10자이상 입려해주세요"
                         android:padding="10dp" />
 
+                    <TextView
+                        android:id="@+id/imageTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="16sp"
+                        android:text="리뷰 사진"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:id="@+id/image"
                         android:layout_width="match_parent"
@@ -134,8 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
-                        android:drawableLeft="@drawable/resize_plus"
-                        android:drawableTint="@color/secondary"
+
                         android:padding="13dp"
                         android:text="사진 추가하기"
                         android:textColor="@color/mediumGray"
@@ -144,6 +153,17 @@
                         app:iconTint="@color/mediumGray"
                         app:strokeColor="@color/mediumGray"
                         app:strokeWidth="1dp" />
+
+                    <Button
+                        android:id="@+id/deleteImgBtn"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/red"
+                        android:padding="13dp"
+                        android:text="사진 삭제하기"
+                        android:textColor="@color/white"
+                        app:cornerRadius="5dp" />
 
 
                 </LinearLayout>

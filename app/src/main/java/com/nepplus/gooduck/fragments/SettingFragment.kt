@@ -154,10 +154,6 @@ class SettingFragment  : BaseFragment(){
                         alert.binding.contentEdt2.hint = "현재 비밀번호를 입력하세요"
                         alert.binding.contentEdt2.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
 
-                        if(alert.binding.contentEdt2.text.toString().isEmpty()){
-                            Toast.makeText(mContext, "빈칸을 입력하세요", Toast.LENGTH_SHORT).show()
-                            return
-                        }
 
                     }
                     "phone" -> {
