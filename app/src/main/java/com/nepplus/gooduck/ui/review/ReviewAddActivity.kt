@@ -178,6 +178,7 @@ class ReviewAddActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "리뷰 등록"
+        background.setBackgroundColor(getColor(R.color.secondary))
 
 
     }

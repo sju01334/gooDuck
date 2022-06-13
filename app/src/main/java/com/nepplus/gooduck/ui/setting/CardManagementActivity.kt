@@ -53,6 +53,7 @@ class CardManagementActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "내 카드 목록"
+        background.setBackgroundColor(getColor(R.color.secondary))
 
 
     }
