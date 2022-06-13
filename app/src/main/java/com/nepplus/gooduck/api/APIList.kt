@@ -78,6 +78,9 @@ interface APIList {
         @Field("password_2digit") pw2digit : String,
     ) : Call<BasicResponse>
 
+    @GET("/user/review")
+    fun getRequestMyReview(): Call<BasicResponse>
+
     //  main
     @GET("/main/banner")
     fun getRequestBanner() : Call<BasicResponse>

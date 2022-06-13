@@ -59,6 +59,11 @@ class ReviewFragment  : BaseFragment(){
             startActivity(myIntent)
         }
 
+        binding.addReviewBtn.setOnClickListener {
+            val myIntent = Intent(mContext , ReviewAddActivity::class.java)
+            startActivity(myIntent)
+        }
+
     }
 
     override fun setValues() {
