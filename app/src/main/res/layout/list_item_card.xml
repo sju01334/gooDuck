@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="10dp"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/r20_white_fill">
+
+    <TextView
+        android:id="@+id/cardNick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카드 애칭"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mediumGray"
+        android:text="카드 번호"/>
+    <TextView
+        android:id="@+id/cardNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:text="카드번호오"
+        android:textColorHighlight="@color/black"/>
+
+
+
+</LinearLayout>
