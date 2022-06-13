@@ -119,12 +119,12 @@ interface APIList {
     @Multipart
     @POST("/review")
     fun postRequestAddReview(
-        @Part("product_id") productId: MultipartBody.Part,
-        @Part("title") title : MultipartBody.Part,
-        @Part("content") content : MultipartBody.Part,
-        @Part("score") score : MultipartBody.Part,
-        @Part("tag_list") tags : MultipartBody.Part,
-        @Part("thumbnail_img") img: MultipartBody.Part?
+        @Part product_id: MultipartBody.Part,
+        @Part title : MultipartBody.Part,
+        @Part content : MultipartBody.Part,
+        @Part score : MultipartBody.Part,
+        @Part tags_list : MultipartBody.Part,
+        @Part thumbnail_img: MultipartBody.Part?
     ) : Call<BasicResponse>
 
     @GET("/review/{review_id}/reply")

@@ -127,6 +127,13 @@ class ReviewAddActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
+            Log.d("아이디", selectedProduct.id.toString())
+            Log.d("11", title)
+            Log.d("22", content)
+            Log.d("33", binding.ratingBar.rating.toString())
+            Log.d("44", tagList)
+            Log.d("55", pic.toString())
+
 
             val id_multi = MultipartBody.Part.createFormData("product_id", selectedProduct.id.toString())
             val title_multi = MultipartBody.Part.createFormData("title", title)
@@ -262,7 +269,7 @@ class ReviewAddActivity : BaseActivity() {
 
 //            파일을 retrofit 에 첨부할 수 있는 => ReqeustBody => MultipartBody  형태로 변환
                 val fileReqBody = RequestBody.create(MediaType.get("image/*"), file)
-                pic = MultipartBody.Part.createFormData("review_images", "myFile.jpg", fileReqBody)
+                pic = MultipartBody.Part.createFormData("thumbnail_img", "myFile.jpg", fileReqBody)
 
             }
         }
