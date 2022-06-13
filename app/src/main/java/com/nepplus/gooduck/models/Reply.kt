@@ -1,6 +1,7 @@
 package com.nepplus.gooduck.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class Reply(
     val id : Int,
@@ -12,5 +13,5 @@ class Reply(
     @SerializedName("created_at")
     val createdAt : String,
     val user : UserData
-) {
+) : Serializable{
 }

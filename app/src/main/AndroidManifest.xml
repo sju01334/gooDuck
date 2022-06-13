@@ -18,16 +18,19 @@
             android:name=".ui.setting.MyReviewListActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.setting.CardAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.setting.CardManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.market.ReviewDetailActivity"
+            android:name=".ui.review.ReviewDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.market.ReviewAddActivity"
+            android:name=".ui.review.ReviewAddActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.market.ReviewItemActivity"
+            android:name=".ui.review.ReviewItemActivity"
             android:exported="false" />
         <activity
             android:name=".ui.market.CartActivity"

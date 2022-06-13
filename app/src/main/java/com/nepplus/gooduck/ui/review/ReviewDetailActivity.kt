@@ -1,7 +1,6 @@
-package com.nepplus.gooduck.ui.market
+package com.nepplus.gooduck.ui.review
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.Dimension

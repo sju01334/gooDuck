@@ -110,7 +110,7 @@ class MarketRecyclerAdapter(
             2 -> {
                 item.smallCategories[0].imageUrl ="https://imgc.1300k.com/aaaaaib/goods/215024/89/215024893926.jpg?3"
                 item.smallCategories[1].imageUrl ="http://media.istockphoto.com/vectors/underwear-silhouette-isolated-vector-set-vector-id543657416?k=6&m=543657416&s=612x612&w=0&h=OP7JXU0wTxWelfQb6nJsaWQIoMWxUnSywQeJ2RI-ttc="
-                item.smallCategories[2].imageUrl ="https://img.ssfshop.com/display/html/DSP_CTGRY/20190524/HOMME_190513_Summer01.jpg"
+                item.smallCategories[2].imageUrl ="https://i.pinimg.com/originals/eb/b1/60/ebb160943143e73f3c22725861791c11.jpg"
                 item.smallCategories[3].imageUrl ="https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/mh/2021/10/29/2021102901031430119001_b.jpg"
                 item.smallCategories[4].imageUrl ="https://cdn.econovill.com/news/orgPhoto/202105/534311_443950_03.png"
             }

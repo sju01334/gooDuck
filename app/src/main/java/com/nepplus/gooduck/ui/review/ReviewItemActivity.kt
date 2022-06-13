@@ -1,10 +1,9 @@
-package com.nepplus.gooduck.ui.market
+package com.nepplus.gooduck.ui.review
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.Dimension
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nepplus.gooduck.BaseActivity
@@ -41,6 +40,7 @@ class ReviewItemActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
 
     }
 

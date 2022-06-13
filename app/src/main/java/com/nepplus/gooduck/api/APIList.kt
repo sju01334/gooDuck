@@ -65,6 +65,19 @@ interface APIList {
         @Field("nick_name") nickname : String
     ) : Call<BasicResponse>
 
+    @GET("/user/card")
+    fun getRequestMyCard(): Call<BasicResponse>
+
+    @FormUrlEncoded
+    @POST("/user/card")
+    fun postRequestAddCard(
+        @Field("card_num") cardNum : String,
+        @Field("card_nickname") cardNick : String,
+        @Field("mm_yy") mmyy : String,
+        @Field("birthday") birthday : String,
+        @Field("password_2digit") pw2digit : String,
+    ) : Call<BasicResponse>
+
     //  main
     @GET("/main/banner")
     fun getRequestBanner() : Call<BasicResponse>

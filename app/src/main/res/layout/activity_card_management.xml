@@ -8,6 +8,7 @@
         android:background="@color/secondary">
 
         <LinearLayout
+            android:id="@+id/emptyLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -89,6 +90,7 @@
             android:layout_height="match_parent"/>
 
         <Button
+            android:id="@+id/addCardBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="카드 추가"

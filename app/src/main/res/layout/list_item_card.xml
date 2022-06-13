@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="130dp"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginTop="10dp"
-    android:padding="20dp"
-    android:orientation="vertical"
-    android:background="@drawable/r20_white_fill">
-
-    <TextView
-        android:id="@+id/cardNick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카드 애칭"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
-
-    <Space
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/r20_white_fill">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/mediumGray"
-        android:text="카드 번호"/>
-    <TextView
-        android:id="@+id/cardNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:text="카드번호오"
-        android:textColorHighlight="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+            <ImageView
+                android:id="@+id/LogoImg"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/cardName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="카드회사"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+        </LinearLayout>
 
+        <TextView
+            android:id="@+id/cardNick"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카드 애칭"
+            android:textStyle="bold"
+            android:textColor="@color/deepblue"
+            android:textSize="18sp"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/mediumGray"
+            android:text="카드 번호"/>
+        <TextView
+            android:id="@+id/cardNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text="카드번호오"
+            android:textColorHighlight="@color/black"/>
+    </LinearLayout>
+</layout>

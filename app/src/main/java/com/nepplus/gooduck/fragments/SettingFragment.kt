@@ -19,6 +19,7 @@ import com.nepplus.gooduck.databinding.FragmentSettingBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.ui.main.LoginActivity
+import com.nepplus.gooduck.ui.setting.CardManagementActivity
 import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import com.nepplus.gooduck.utils.URIPathHelper
@@ -168,6 +169,11 @@ class SettingFragment  : BaseFragment(){
             alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
             alert.binding.contentEdt1.visibility = View.GONE
             alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+        }
+
+        binding.manageCardLayout.setOnClickListener{
+            val myIntent = Intent(mContext, CardManagementActivity::class.java)
+            startActivity(myIntent)
         }
     }
 

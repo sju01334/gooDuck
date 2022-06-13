@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nepplus.gooduck.R
@@ -14,8 +13,8 @@ import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
 import com.nepplus.gooduck.databinding.FragmentReviewBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Review
-import com.nepplus.gooduck.ui.market.ReviewAddActivity
-import com.nepplus.gooduck.ui.market.ReviewDetailActivity
+import com.nepplus.gooduck.ui.review.ReviewAddActivity
+import com.nepplus.gooduck.ui.review.ReviewDetailActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,9 +77,7 @@ class ReviewFragment  : BaseFragment(){
                     if(reviewSize > 0 ){
                         binding.emptyLayout.visibility = View.GONE
                         binding.reviewRecyclerView.visibility = View.VISIBLE
-                        if(reviewSize != 0){
-                            mReviewList.clear()
-                        }
+                        mReviewList.clear()
                         mReviewList.addAll(br.data.reviews)
                         initAdapters()
                     }

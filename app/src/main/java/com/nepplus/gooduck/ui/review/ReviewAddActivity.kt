@@ -1,4 +1,4 @@
-package com.nepplus.gooduck.ui.market
+package com.nepplus.gooduck.ui.review
 
 import android.Manifest
 import android.app.Activity
@@ -39,7 +39,7 @@ class ReviewAddActivity : BaseActivity() {
     var mProductStringList = ArrayList<String>()
     var mCategoryStringList = ArrayList<String>()
 
-    lateinit var pic : MultipartBody.Part
+    var pic : MultipartBody.Part? = null
 
 
 
@@ -134,13 +134,14 @@ class ReviewAddActivity : BaseActivity() {
             Log.d("44", tagList)
             Log.d("55", pic.toString())
 
+
             apiList.postRequestAddReview(
                 selectedProduct.id,
                 title,
                 content,
                 binding.ratingBar.rating,
                 tagList,
-                pic
+                pic!!
             ).enqueue(object : Callback<BasicResponse>{
                 override fun onResponse(
                     call: Call<BasicResponse>,
@@ -177,10 +178,6 @@ class ReviewAddActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "리뷰 등록"
-
-
-
-
 
 
     }

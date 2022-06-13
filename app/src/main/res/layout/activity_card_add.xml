@@ -89,6 +89,7 @@
                     android:id="@+id/cardNickEdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="애칭을 입력하세요"/>
 
                 <TextView
@@ -104,6 +105,7 @@
                     android:id="@+id/cardDateEdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="ex) 0923"/>
 
                 <TextView
@@ -119,6 +121,7 @@
                     android:id="@+id/birthdayEdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="ex) 980317"/>
 
                 <TextView
@@ -137,6 +140,7 @@
                         android:id="@+id/password"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         android:hint="**"
                         android:gravity="center"/>
 
