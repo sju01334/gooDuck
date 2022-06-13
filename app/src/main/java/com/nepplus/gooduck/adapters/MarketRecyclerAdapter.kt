@@ -44,7 +44,7 @@ class MarketRecyclerAdapter(
 //            Log.d("이미지 있니?", item.smallCategories[0].imageUrl)
             mSmallList.addAll(item.smallCategories)
 
-            mSmallAdapter = MarketChildRecyclerAdapter(mContext, mSmallList)
+            mSmallAdapter = MarketChildRecyclerAdapter(mContext, item.smallCategories)
             binding.smallRecyclerView.adapter = mSmallAdapter
             binding.smallRecyclerView.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
 
