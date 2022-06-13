@@ -52,6 +52,7 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_search_password.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_signup.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/activity_splash.xml" value="0.18" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/content_side_menu.xml" value="0.2901178603807797" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_action_bar.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/custom_alert_dialog.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/fragment_image_slide.xml" value="0.23001282599401454" />
@@ -69,7 +70,10 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_detail.xml" value="0.33" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_reply.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_review.xml" value="0.25" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/side_navi_bar.xml" value="0.28430953398888414" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/activity_main_drawer.xml" value="0.28430953398888414" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2509619495510902" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/side_menu.xml" value="0.28430953398888414" />
       </map>
     </option>
   </component>

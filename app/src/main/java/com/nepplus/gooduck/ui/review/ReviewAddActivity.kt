@@ -127,13 +127,6 @@ class ReviewAddActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
-            Log.d("아이디", selectedProduct.id.toString())
-            Log.d("11", title)
-            Log.d("22", content)
-            Log.d("33", binding.ratingBar.rating.toString())
-            Log.d("44", tagList)
-            Log.d("55", pic.toString())
-
 
             val id_multi = MultipartBody.Part.createFormData("product_id", selectedProduct.id.toString())
             val title_multi = MultipartBody.Part.createFormData("title", title)
@@ -225,6 +218,7 @@ class ReviewAddActivity : BaseActivity() {
                     val br = response.body()!!
                     mProductStringList.clear()
                     mProductStringList.addAll(br.data.products.map { it.name })
+                    mProductList.clear()
                     mProductList.addAll(br.data.products)
 
                     val adapter =ArrayAdapter(

@@ -95,6 +95,7 @@ class SettingFragment  : BaseFragment(){
                                         val br = response.body()!!
                                         GlobalData.loginUser = br.data.user
                                         setUserData()
+                                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
                                     } else {
                                         val errorBodyStr = response.errorBody()!!.string()
@@ -244,8 +245,6 @@ class SettingFragment  : BaseFragment(){
     }
 
     fun setUserData() {
-
-        Log.d("SettingFragment_이미지 없니?",GlobalData.loginUser!!.profileImg)
 
         Glide.with(mContext)
             .load(GlobalData.loginUser!!.profileImg)

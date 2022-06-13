@@ -3,7 +3,9 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    android:layout_gravity="top"
     android:background="@color/white">
+
 
     <ImageView
         android:id="@+id/sideBarBtn"

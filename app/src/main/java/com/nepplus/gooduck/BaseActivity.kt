@@ -30,14 +30,12 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var background : FrameLayout
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
 
         supportActionBar?.let{
             setCustomActionBar()
-
         }
 
         retrofit = ServerApi.getRetrofit(mContext)
@@ -47,7 +45,7 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun setupEvents()
     abstract  fun setValues()
 
-    fun setCustomActionBar () {
+    open fun setCustomActionBar () {
         val defActionBar = supportActionBar!!
         defActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         defActionBar.setCustomView(R.layout.custom_action_bar)
