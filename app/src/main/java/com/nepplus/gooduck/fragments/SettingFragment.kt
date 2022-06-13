@@ -18,6 +18,8 @@ import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.FragmentSettingBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
+import com.nepplus.gooduck.ui.main.LoginActivity
+import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import com.nepplus.gooduck.utils.URIPathHelper
 import okhttp3.MediaType
@@ -90,7 +92,6 @@ class SettingFragment  : BaseFragment(){
                                         val br = response.body()!!
                                         GlobalData.loginUser = br.data.user
                                         setUserData()
-                                        alert.dialog.dismiss()
 
                                     } else {
                                         val errorBodyStr = response.errorBody()!!.string()
@@ -146,6 +147,28 @@ class SettingFragment  : BaseFragment(){
         binding.changeNickLayout.setOnClickListener(ocl)
         binding.changeEmailLayout.setOnClickListener(ocl)
         binding.changePhoneLayout.setOnClickListener(ocl)
+
+        //        로그아웃
+        binding.logoutBtn.setOnClickListener {
+            val alert = CustomAlertDialog(mContext,)
+            alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                override fun positiveBtnClicked() {
+                    ContextUtil.clear(mContext)
+                    GlobalData.loginUser = null
+                    val myIntent = Intent(mContext, LoginActivity::class.java)
+                    myIntent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(myIntent)
+                }
+                override fun negativeBtnClicked() {
+                }
+            })
+
+            alert.binding.titleTxt.text = "로그 아웃"
+            alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
+            alert.binding.contentEdt1.visibility = View.GONE
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+        }
     }
 
     override fun setValues() {
@@ -193,7 +216,6 @@ class SettingFragment  : BaseFragment(){
                     ) {
                         if (response.isSuccessful) {
                             GlobalData.loginUser = response.body()!!.data.user
-
                             Glide.with(mContext).load(GlobalData.loginUser!!.profileImg)
 
                             Toast.makeText(mContext, "프로필 사진이 변경되었습니다", Toast.LENGTH_SHORT).show()

@@ -139,6 +139,12 @@ class SignupActivity : BaseActivity() {
     }
 
     fun dupCheck(type: String, value: String) {
+
+        if(value.isEmpty()){
+            Toast.makeText(mContext, "빈칸을 입력하세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         apiList.getRequestUserCheck(type, value).enqueue(object : Callback<BasicResponse> {
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
                 if (response.isSuccessful) {
@@ -148,13 +154,13 @@ class SignupActivity : BaseActivity() {
                     when (type) {
                         "EMAIL" -> {
                             isEmailDupOk = true
-                            binding.emailDupBtn.setBackgroundResource(R.drawable.r5_lightgray_stroke_1dp)
+                            binding.emailDupBtn.setBackgroundResource(R.drawable.r5_mediumgray_fill)
                             binding.emailDupBtn.isClickable = false
 
                         }
                         "NICK_NAME" -> {
                             isNickDupOk = true
-                            binding.nickDupBtn.setBackgroundResource(R.drawable.r5_lightgray_stroke_1dp)
+                            binding.nickDupBtn.setBackgroundResource(R.drawable.r5_mediumgray_fill)
                             binding.nickDupBtn.isClickable = false
                         }
 

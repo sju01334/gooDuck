@@ -40,7 +40,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviewRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/emptyLayout"
@@ -60,7 +60,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="리뷰생성"
+                    android:text="리뷰추가"
                     android:textColor="@color/mediumGray"
                     app:icon="@drawable/resize_plus"
                     app:iconTint="@color/mediumGray"
@@ -73,11 +73,12 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_gravity="bottom|end"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                app:borderWidth="0dp"
                 android:backgroundTint="@color/primary"
                 app:srcCompat="@drawable/plus_white"
-                app:tint="@android:color/white"
-                android:layout_marginBottom="25dp"
-                android:layout_marginEnd="25dp"/>
+                app:tint="@android:color/white" />
 
         </FrameLayout>
 

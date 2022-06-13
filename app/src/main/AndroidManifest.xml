@@ -15,16 +15,17 @@
         android:theme="@style/Theme.GooDuck"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.setting.MyReviewListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.CardManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.market.ReviewDetailActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.market.ReviewAddActivity"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.market.ReviewItemActivity"
             android:exported="false" />

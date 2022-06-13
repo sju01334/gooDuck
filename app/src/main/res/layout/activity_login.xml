@@ -44,7 +44,7 @@
             android:id="@+id/passwordEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             android:padding="10dp"
             android:background="@drawable/r5_lightgray_stroke_1dp"
             android:drawableStart="@drawable/resize_lock_yellow"
@@ -65,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/r50_white_fill"
             android:backgroundTint="@color/white"
+            android:background="@drawable/r50_white_fill"
             android:text="로그인"
             android:textColor="@color/primary"
             android:textSize="@dimen/buttonTxt" />

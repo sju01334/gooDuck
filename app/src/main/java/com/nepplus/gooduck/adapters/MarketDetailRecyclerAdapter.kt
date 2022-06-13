@@ -44,9 +44,9 @@ class MarketDetailRecyclerAdapter(
         val originalPrice = itemView.findViewById<TextView>(R.id.originalPrice)
         val image = itemView.findViewById<ImageView>(R.id.image)
         val addCartBtn = itemView.findViewById<CardView>(R.id.addCartBtn)
-        val reviewBtn = itemView.findViewById<Button>(R.id.reviewBtn)
+        val reviewBtn = itemView.findViewById<TextView>(R.id.reviewBtn)
         val deleteBtn = itemView.findViewById<TextView>(R.id.deleteBtn)
-        val buyBtn = itemView.findViewById<Button>(R.id.buyBtn)
+        val buyBtn = itemView.findViewById<TextView>(R.id.buyBtn)
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
 
@@ -148,6 +148,7 @@ class MarketDetailRecyclerAdapter(
                 alert.binding.contentEdt1.visibility = View.GONE
                 alert.binding.titleTxt.text = "장바구니 삭제"
                 alert.binding.bodyTxt.text = "${item.product.name} 을 삭제하시겠습니까?"
+                alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
 
 
 
