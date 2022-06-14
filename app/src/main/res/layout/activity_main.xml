@@ -25,11 +25,23 @@
         android:orientation="vertical"
         tools:context=".ui.main.MainActivity">
 
-<!--        <include-->
-<!--            android:id="@+id/mainToolbar"-->
-<!--            layout="@layout/custom_action_bar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content" />-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GooDuck"
+                android:fontFamily="@font/fugaz_one"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_gravity="center"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mainViewPager"
