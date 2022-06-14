@@ -43,7 +43,7 @@
                 android:id="@+id/bottomNav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="2dp"
                 app:menu="@menu/bottom_nav_menu"
                 android:background="@drawable/custom_navi_gray"/>
 

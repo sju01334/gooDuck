@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/secondary">
@@ -9,14 +10,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/secondary"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="15dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="15dp"
                 android:background="@drawable/r20_white_fill"
                 android:orientation="horizontal"
                 android:paddingHorizontal="20dp"
@@ -119,8 +118,91 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/r20_white_fill"
+                android:background="@color/white"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/manageBuyLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/truck"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="주문"/>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/manageReviewLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:src="@drawable/list" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="리뷰" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/managePointLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/point"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="포인트"/>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:background="@color/white"
                 android:orientation="vertical">
+
 
                 <LinearLayout
                     android:id="@+id/changeNickLayout"
@@ -327,7 +409,7 @@
                     android:background="@color/mediumGray" />
 
                 <LinearLayout
-                    android:id="@+id/managePointLayout"
+                    android:id="@+id/logoutBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -335,16 +417,11 @@
                     android:orientation="horizontal"
                     android:padding="5dp">
 
-                    <ImageView
-                        android:layout_width="@dimen/resize"
-                        android:layout_height="@dimen/resize"
-                        android:src="@drawable/point" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="포인트 적립내역 조회" />
+                        android:text="로그아웃" />
 
                     <Space
                         android:layout_width="0dp"
@@ -360,85 +437,7 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/mediumGray" />
 
-                <LinearLayout
-                    android:id="@+id/manageBuyLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="@dimen/resize"
-                        android:layout_height="@dimen/resize"
-                        android:src="@drawable/list" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="구독 결제내역 조회" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/right_arrow"
-                        app:tint="@color/mediumGray" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/mediumGray" />
-
-                <LinearLayout
-                    android:id="@+id/manageReviewLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="@dimen/resize"
-                        android:layout_height="@dimen/resize"
-                        android:src="@drawable/review" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="내 리뷰 목록 조회" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/right_arrow"
-                        app:tint="@color/mediumGray" />
-
-                </LinearLayout>
 
 
             </LinearLayout>
@@ -446,7 +445,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Space
@@ -459,20 +457,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="탈퇴하기"
+                    android:layout_margin="20dp"
+
                     android:textColor="@color/red"
                     android:textSize="16sp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/logoutBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/r50_yellow_fill"
-                android:text="로그아웃"
-                android:textColor="@color/white"
-                android:textSize="@dimen/buttonTxt" />
+
         </LinearLayout>
 
     </ScrollView>
