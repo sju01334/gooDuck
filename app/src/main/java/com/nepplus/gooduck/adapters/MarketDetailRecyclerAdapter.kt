@@ -6,9 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,6 +15,7 @@ import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
+import com.nepplus.gooduck.models.Card
 import com.nepplus.gooduck.models.Cart
 import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.ui.market.CartActivity
@@ -36,6 +35,8 @@ class MarketDetailRecyclerAdapter(
 
     private lateinit var itemClickListener : OnItemClickListener
 
+
+
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val name = itemView.findViewById<TextView>(R.id.name)
@@ -48,6 +49,88 @@ class MarketDetailRecyclerAdapter(
         val buyBtn = itemView.findViewById<TextView>(R.id.buyBtn)
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
+
+        var mCardList = ArrayList<Card>()
+        var cardId = 0
+
+
+        fun createAlert(mCardNickList : ArrayList<String>, productId : Int){
+            val alert = CustomAlertDialog(mContext)
+
+            alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                override fun positiveBtnClicked() {
+
+                    apiList.postRequestPurchaseProduct(
+                        productId,
+                        cardId
+                    ).enqueue(object : Callback<BasicResponse>{
+                        override fun onResponse(
+                            call: Call<BasicResponse>,
+                            response: Response<BasicResponse>
+                        ) {
+                            if(response.isSuccessful){
+                                val br = response.body()!!
+                                Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                                alert.dialog.dismiss()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                        }
+                    })
+
+                }
+
+                override fun negativeBtnClicked() {
+
+                }
+            })
+
+            alert.binding.bodyTxt.text = "해당 상품을 구독하시겠습니까?"
+            alert.binding.contentEdt1.visibility = View.GONE
+            alert.binding.cardLayout.visibility = View.VISIBLE
+
+            val cardAdapter = ArrayAdapter(
+                mContext,
+                androidx.databinding.library.baseAdapters.R.layout.support_simple_spinner_dropdown_item,
+                mCardNickList)
+            alert.binding.cardSpinner.adapter = cardAdapter
+
+            alert.binding.cardSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                    cardId = mCardList[position].id
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+            }
+        }
+
+        fun getCardList(prorductId : Int){
+            apiList.getRequestMyCard().enqueue(object : Callback<BasicResponse>{
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
+                    if(response.isSuccessful){
+                        val br = response.body()!!
+                        mCardList.addAll(br.data.cards)
+
+                        val mCardNickList = ArrayList<String>()
+                        mCardNickList.addAll(br.data.cards.map { it.cardNick })
+                        createAlert(mCardNickList, prorductId)
+
+                    }
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+            })
+        }
+
+
 
         fun bind(item: Product) {
 
@@ -90,8 +173,14 @@ class MarketDetailRecyclerAdapter(
                 myIntent.putExtra("product", item)
                 mContext.startActivity(myIntent)
             }
-        }
 
+            buyBtn.setOnClickListener {
+                getCardList(item.id)
+
+            }
+
+
+        }
 
 
         fun bindCart(item : Cart){
@@ -161,6 +250,11 @@ class MarketDetailRecyclerAdapter(
                 mContext.startActivity(myIntent)
             }
 
+            buyBtn.setOnClickListener {
+                getCardList(item.productId)
+
+            }
+
         }
     }
 
@@ -192,6 +286,9 @@ class MarketDetailRecyclerAdapter(
     fun setItemClickListener(onItemClickListener: OnItemClickListener){
         this.itemClickListener = onItemClickListener
     }
+
+
+
 
 
 
