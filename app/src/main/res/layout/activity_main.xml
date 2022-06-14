@@ -9,6 +9,46 @@
         android:layout_height="match_parent"
         tools:openDrawer="start">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.main.MainActivity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mainToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/titleTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GooDuck"
+                    android:fontFamily="@font/fugaz_one"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:layout_gravity="center"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/mainViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                app:menu="@menu/bottom_nav_menu"
+                android:background="@drawable/custom_navi_gray"/>
+
+
+        </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navView"
@@ -19,46 +59,6 @@
             app:menu="@menu/side_nav_menu"
             app:headerLayout="@layout/side_navi_header"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.main.MainActivity">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/titleTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GooDuck"
-                android:fontFamily="@font/fugaz_one"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:layout_gravity="center"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/mainViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            app:menu="@menu/bottom_nav_menu"
-            android:background="@drawable/custom_navi_gray"/>
-
-
-    </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>

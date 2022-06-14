@@ -61,9 +61,11 @@ class MainActivity : BaseActivity(){
                     else  -> {}
                 }
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
-                return true
+                return false
             }
         })
+
+//        binding.navView.addHeaderView(0)
 
 
 
