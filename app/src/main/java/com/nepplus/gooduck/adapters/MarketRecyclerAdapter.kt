@@ -1,6 +1,8 @@
 package com.nepplus.gooduck.adapters
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,9 +29,13 @@ class MarketRecyclerAdapter(
     val TYPE_HEADER = 0
     val TYPE_ITEM = 1
 
-    lateinit var frag : Fragment
+    var currentPosition = 0
+
 
     lateinit var mSliderAdapter : ImageSliderAdapter
+
+
+    lateinit var handler : Handler
 
 
     lateinit var mSmallAdapter : MarketChildRecyclerAdapter
@@ -60,6 +66,17 @@ class MarketRecyclerAdapter(
             binding.bannerVeiwPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
             binding.dotsIndicator.setViewPager2(binding.bannerVeiwPager)
+
+            handler= Handler(Looper.getMainLooper()){
+                if(currentPosition == mBannerList.size) currentPosition = 0
+                binding.bannerVeiwPager.setCurrentItem(currentPosition,true)
+                currentPosition += 1
+                true
+            }
+
+            val thread=Thread(PagerRunnable())
+            thread.start()
+
 
         }
     }
@@ -120,6 +137,16 @@ class MarketRecyclerAdapter(
                 item.smallCategories[2].imageUrl ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ0GM0uMvJVOfQCFIa_BzEQkP-9jEV8udXyg&usqp=CAU"
                 item.smallCategories[3].imageUrl ="http://img.segye.com/content/image/2021/07/06/20210706506994.jpg"
                 item.smallCategories[4].imageUrl ="http://image.babosarang.co.kr/product/detail/TIL/1905021412160108/_600.jpg"
+            }
+        }
+    }
+
+    //2초 마다 페이지 넘기기
+    inner class PagerRunnable:Runnable{
+        override fun run() {
+            while(true){
+                Thread.sleep(2000)
+                handler.sendEmptyMessage(0)
             }
         }
     }
