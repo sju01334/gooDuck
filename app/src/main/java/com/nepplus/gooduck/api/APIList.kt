@@ -135,4 +135,12 @@ interface APIList {
     @POST("/review/{review_id}/reply")
     fun postRequestAddReply(@Path("review_id") id : Int, @Field("content") content : String) : Call<BasicResponse>
 
+
+    @FormUrlEncoded
+    @POST("/purchase")
+    fun postRequestPurchaseProduct(
+        @Field("product_id") id : Int,
+        @Field("content") content : String
+    ) : Call<BasicResponse>
+
 }
