@@ -2,5 +2,8 @@ package com.nepplus.gooduck.models
 
 import java.io.Serializable
 
-class Store: Serializable {
+class Store(
+    val it : Int,
+    val name : String
+): Serializable {
 }

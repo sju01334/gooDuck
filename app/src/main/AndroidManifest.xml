@@ -15,7 +15,10 @@
         android:theme="@style/Theme.GooDuck"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.setting.PaymentActivity"
+            android:name=".ui.setting.PointListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.PaymentListActivity"
             android:exported="false" />
         <activity
             android:name=".ui.setting.MyReviewListActivity"

@@ -22,6 +22,8 @@ import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.ui.main.LoginActivity
 import com.nepplus.gooduck.ui.setting.CardManagementActivity
 import com.nepplus.gooduck.ui.setting.MyReviewListActivity
+import com.nepplus.gooduck.ui.setting.PaymentListActivity
+import com.nepplus.gooduck.ui.setting.PointListActivity
 import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import com.nepplus.gooduck.utils.URIPathHelper
@@ -205,6 +207,16 @@ class SettingFragment  : BaseFragment(){
 
         binding.manageReviewLayout.setOnClickListener{
             val myIntent = Intent(mContext, MyReviewListActivity::class.java)
+            startActivity(myIntent)
+        }
+
+        binding.manageBuyLayout.setOnClickListener {
+            val myIntent = Intent(mContext, PaymentListActivity::class.java)
+            startActivity(myIntent)
+        }
+
+        binding.managePointLayout.setOnClickListener {
+            val myIntent = Intent(mContext, PointListActivity::class.java)
             startActivity(myIntent)
         }
 

@@ -85,6 +85,12 @@ interface APIList {
     @GET("/user/review")
     fun getRequestMyReview(): Call<BasicResponse>
 
+    @GET("/user/payment")
+    fun getRequestMyPayment(): Call<BasicResponse>
+
+    @GET("/user/point")
+    fun getRequestMyPoint(): Call<BasicResponse>
+
     //  main
     @GET("/main/banner")
     fun getRequestBanner() : Call<BasicResponse>

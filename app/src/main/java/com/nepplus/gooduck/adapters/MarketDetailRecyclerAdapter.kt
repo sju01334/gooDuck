@@ -87,6 +87,7 @@ class MarketDetailRecyclerAdapter(
                 }
             })
 
+            alert.binding.titleTxt.text = "구독하기"
             alert.binding.bodyTxt.text = "해당 상품을 구독하시겠습니까?"
             alert.binding.contentEdt1.visibility = View.GONE
             alert.binding.cardLayout.visibility = View.VISIBLE
