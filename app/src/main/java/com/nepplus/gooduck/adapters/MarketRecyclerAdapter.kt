@@ -74,7 +74,7 @@ class MarketRecyclerAdapter(
                 true
             }
 
-            val thread=Thread(PagerRunnable())
+            val thread = Thread(PagerRunnable())
             thread.start()
 
 
