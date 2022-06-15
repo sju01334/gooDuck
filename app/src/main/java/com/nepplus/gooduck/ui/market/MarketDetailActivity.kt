@@ -58,7 +58,7 @@ class MarketDetailActivity : BaseActivity () {
         titleTxt.text = sCategories.name
         titleTxt.setTextSize(Dimension.SP, 18F)
 
-        mDetailAdapter = MarketDetailRecyclerAdapter(mContext, mProductList, null, "Detail")
+        mDetailAdapter = MarketDetailRecyclerAdapter(mContext, mProductList)
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
         binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
 

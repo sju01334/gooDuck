@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
@@ -57,7 +58,7 @@ class ReviewItemActivity : BaseActivity() {
 
         mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
         binding.reviewRecyclerView.adapter = mReviewAdapter
-        binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
+        binding.reviewRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
         mReviewAdapter.setItemClickListener(object : ReviewRecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {

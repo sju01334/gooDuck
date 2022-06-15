@@ -27,10 +27,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MarketDetailRecyclerAdapter(
+class CartRecyclerAdapter(
     val mContext: Context,
-    val mProductList: List<Product>
-) : RecyclerView.Adapter<MarketDetailRecyclerAdapter.ItemViewHolder>() {
+    val mCartLsit: List<Cart>
+) : RecyclerView.Adapter<CartRecyclerAdapter.ItemViewHolder>() {
 
     private lateinit var itemClickListener : OnItemClickListener
 
@@ -44,6 +44,7 @@ class MarketDetailRecyclerAdapter(
         val image = itemView.findViewById<ImageView>(R.id.image)
         val addCartBtn = itemView.findViewById<CardView>(R.id.addCartBtn)
         val reviewBtn = itemView.findViewById<TextView>(R.id.reviewBtn)
+        val deleteBtn = itemView.findViewById<TextView>(R.id.deleteBtn)
         val buyBtn = itemView.findViewById<TextView>(R.id.buyBtn)
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
@@ -131,58 +132,81 @@ class MarketDetailRecyclerAdapter(
 
 
 
-        fun bind(item: Product) {
 
-            name.text = item.name
-            price.text = "${item.price}원"
-            originalPrice.text = "${String.format("%.0f",item.price * 1.3)}원"
+        fun bindCart(item : Cart){
+
+            name.text = item.product.name
+            price.text = "${item.product.price}원"
+            originalPrice.text = "${String.format("%.0f",item.product.price * 1.3)}원"
             originalPrice.paintFlags = originalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            Glide.with(mContext).load(item.imageUrl).fitCenter().into(image)
+            Glide.with(mContext).load(item.product.imageUrl).fitCenter().into(image)
+
+            addCartBtn.visibility = View.GONE
+            deleteBtn.visibility = View.VISIBLE
+
+            deleteBtn.setOnClickListener {
+
+                val alert = CustomAlertDialog(mContext)
+                alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                    override fun positiveBtnClicked() {
+                        apiList.deleteRequestMyCartProduct(item.product.id).enqueue(object : Callback<BasicResponse>{
+                            override fun onResponse(
+                                call: Call<BasicResponse>,
+                                response: Response<BasicResponse>
+                            ) {
+                                if(response.isSuccessful){
+                                    val br = response.body()!!
+
+                                    Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
 
-            addCartBtn.setOnClickListener {
-                apiList.postRequestAddCart(item.id).enqueue(object : Callback<BasicResponse>{
-                    override fun onResponse(
-                        call: Call<BasicResponse>,
-                        response: Response<BasicResponse>
-                    ) {
-                        if(response.isSuccessful){
-                            val br = response.body()!!
-                            Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                                }else {
+                                    val errorBody = response.errorBody()!!.string()
+                                    val jsonObj = JSONObject(errorBody)
+                                    val code = jsonObj.getString("code")
+                                    val message = jsonObj.getString("message")
 
-                        }else {
-                            val errorBody = response.errorBody()!!.string()
-                            val jsonObj = JSONObject(errorBody)
-                            val code = jsonObj.getString("code")
-                            val message = jsonObj.getString("message")
+                                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                                }
 
-                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
-                        }
+                                (mContext as CartActivity).getProductData()
+                                alert.dialog.dismiss()
 
+                            }
+
+                            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                                Log.d("호출에러", t.toString())
+                            }
+                        })
                     }
 
-                    override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-                        Log.d("호출에러", t.toString())
+                    override fun negativeBtnClicked() {
                     }
+
                 })
+
+                alert.binding.contentEdt1.visibility = View.GONE
+                alert.binding.titleTxt.text = "장바구니 삭제"
+                alert.binding.bodyTxt.text = "${item.product.name} 을 삭제하시겠습니까?"
+                alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+
+
+
 
             }
 
             reviewBtn.setOnClickListener {
                 val myIntent = Intent(mContext, ReviewItemActivity::class.java)
-                myIntent.putExtra("product", item)
+                myIntent.putExtra("product", item.product)
                 mContext.startActivity(myIntent)
             }
 
             buyBtn.setOnClickListener {
-                getCardList(item.id)
+                getCardList(item.productId)
 
             }
 
-
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -191,7 +215,7 @@ class MarketDetailRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(mProductList[position])
+        holder.bindCart(mCartLsit[position])
 
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
@@ -199,7 +223,7 @@ class MarketDetailRecyclerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mProductList.size
+        return mCartLsit.size
     }
 
     interface OnItemClickListener{fun onClick(v : View , position: Int)}

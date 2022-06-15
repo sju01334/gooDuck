@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
+import com.nepplus.gooduck.adapters.CartRecyclerAdapter
 import com.nepplus.gooduck.adapters.MarketDetailRecyclerAdapter
 import com.nepplus.gooduck.databinding.ActivityCartBinding
 import com.nepplus.gooduck.models.BasicResponse
@@ -22,7 +23,7 @@ class CartActivity : BaseActivity () {
 
     lateinit var binding : ActivityCartBinding
 
-    lateinit var mDetailAdapter : MarketDetailRecyclerAdapter
+    lateinit var mDetailAdapter : CartRecyclerAdapter
     var mCartList = ArrayList<Cart>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,7 @@ class CartActivity : BaseActivity () {
 
     override fun setupEvents() {
         
-        mDetailAdapter.setItemClickListener(object : MarketDetailRecyclerAdapter.OnItemClickListener{
+        mDetailAdapter.setItemClickListener(object : CartRecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
             }
         })
@@ -53,7 +54,7 @@ class CartActivity : BaseActivity () {
         titleTxt.text = "장바구니"
         titleTxt.setTextSize(Dimension.SP, 18F)
 
-        mDetailAdapter = MarketDetailRecyclerAdapter(mContext, null, mCartList, "Cart")
+        mDetailAdapter = CartRecyclerAdapter(mContext,  mCartList)
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
         binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
