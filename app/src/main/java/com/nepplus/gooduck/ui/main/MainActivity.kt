@@ -3,10 +3,11 @@ package com.nepplus.gooduck.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -18,7 +19,13 @@ import com.nepplus.gooduck.R.*
 import com.nepplus.gooduck.adapters.MainViewPagerAdapter
 import com.nepplus.gooduck.databinding.ActivityCardAddBinding.inflate
 import com.nepplus.gooduck.databinding.ActivityMainBinding
+import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.ui.market.CartActivity
+import com.nepplus.gooduck.ui.setting.MyReviewListActivity
+import com.nepplus.gooduck.ui.setting.PaymentListActivity
+import com.nepplus.gooduck.ui.setting.PointListActivity
+import com.nepplus.gooduck.utils.ContextUtil
+import com.nepplus.gooduck.utils.GlobalData
 
 
 class MainActivity : BaseActivity(){
@@ -46,6 +53,60 @@ class MainActivity : BaseActivity(){
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+//        네비 헤더 메뉴 클릭 리스너
+        val header = binding.navView.getHeaderView(0)
+        val logout = header.findViewById<Button>(R.id.logoutBtn)
+        val myPage = header.findViewById<Button>(R.id.myPageBtn)
+        val txt = header.findViewById<TextView>(id.Txt)
+        val manageBuyLayout = header.findViewById<LinearLayout>(id.manageBuyLayout)
+        val manageReviewLayout = header.findViewById<LinearLayout>(id.manageReviewLayout)
+        val managePointLayout = header.findViewById<LinearLayout>(id.managePointLayout)
+
+        txt.text = "안녕하세요. ${GlobalData.loginUser!!.nickname}님, 환영합니다!"
+
+        logout.setOnClickListener {
+            //        로그아웃
+            val alert = CustomAlertDialog(mContext)
+            alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
+                override fun positiveBtnClicked() {
+                    alert.dialog.dismiss()
+                    ContextUtil.clear(mContext)
+                    GlobalData.loginUser = null
+                    val myIntent = Intent(mContext, LoginActivity::class.java)
+                    myIntent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(myIntent)
+                }
+                override fun negativeBtnClicked() {
+                }
+            })
+
+            alert.binding.titleTxt.text = "로그 아웃"
+            alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
+            alert.binding.contentEdt1.visibility = View.GONE
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+        }
+
+        myPage.setOnClickListener {  }
+
+        manageReviewLayout.setOnClickListener{
+            val myIntent = Intent(mContext, MyReviewListActivity::class.java)
+            startActivity(myIntent)
+        }
+
+        manageBuyLayout.setOnClickListener {
+            val myIntent = Intent(mContext, PaymentListActivity::class.java)
+            startActivity(myIntent)
+        }
+
+        managePointLayout.setOnClickListener {
+            val myIntent = Intent(mContext, PointListActivity::class.java)
+            startActivity(myIntent)
+        }
+
+
+
+
         binding.navView.setNavigationItemSelectedListener(object : NavigationView.OnNavigationItemSelectedListener{
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
@@ -65,7 +126,6 @@ class MainActivity : BaseActivity(){
             }
         })
 
-//        binding.navView.addHeaderView(0)
 
 
 

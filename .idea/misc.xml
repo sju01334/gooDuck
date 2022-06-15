@@ -9,6 +9,9 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/item_spinner.xml" value="0.2115" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/lightgray_rectangle_r5.xml" value="0.206" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/primary_rectangle_r5.xml" value="0.1955" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r0_lightgray_stroke_0_5dp.xml" value="0.2055" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r0_mediumgray_stroke_0.5dp.xml" value="0.2055" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r0_mediumgray_stroke_0_5dp.xml" value="0.2055" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r10_rectangle.xml" value="0.2115" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r20_white_fill.xml" value="0.237" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/drawable/r50_red_fill.xml" value="0.1235" />
@@ -75,7 +78,7 @@
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_reply.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/list_item_review.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/side_navi_bar.xml" value="0.28430953398888414" />
-        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/side_navi_header.xml" value="0.1735784523300556" />
+        <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/layout/side_navi_header.xml" value="0.25" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/activity_main_drawer.xml" value="0.28430953398888414" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2509619495510902" />
         <entry key="..\:/Nepplus/Android/gooDuck/app/src/main/res/menu/side_menu.xml" value="0.28430953398888414" />

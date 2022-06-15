@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:openDrawer="start">
@@ -52,10 +51,9 @@
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navView"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:fitsSystemWindows="true"
             app:menu="@menu/side_nav_menu"
             app:headerLayout="@layout/side_navi_header"/>
 

@@ -27,5 +27,21 @@
             android:layout_gravity="center"
             />
 
+        <TextView
+            android:id="@+id/titleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular Delivery"
+            android:fontFamily="@font/fugaz_one"
+            android:textColor="@color/mediumGray"
+            android:textSize="28sp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="정기배송 서비스를 통해 현명하게 소비하세요."/>
+
     </LinearLayout>
 </layout>
