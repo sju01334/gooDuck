@@ -18,6 +18,7 @@ import com.nepplus.gooduck.models.Review
 import com.nepplus.gooduck.models.SmallCategory
 import com.nepplus.gooduck.ui.market.MarketDetailActivity
 import com.willy.ratingbar.ScaleRatingBar
+import de.hdodenhof.circleimageview.CircleImageView
 
 class ReviewRecyclerAdapter(
     val mContext: Context,
@@ -33,6 +34,7 @@ class ReviewRecyclerAdapter(
         val reviewName = itemView.findViewById<TextView>(R.id.reviewName)
         val userName = itemView.findViewById<TextView>(R.id.userName)
         val ratingBar = itemView.findViewById<ScaleRatingBar>(R.id.ratingBar)
+        val socialImg = itemView.findViewById<CircleImageView>(R.id.socialImg)
 
         val image = itemView.findViewById<ImageView>(R.id.image)
 
@@ -50,6 +52,16 @@ class ReviewRecyclerAdapter(
             }
             userName.text = item.user.nickname
             ratingBar.rating = item.score
+
+            if(item.user.provider != "default"){
+                socialImg.visibility = View.VISIBLE
+                when(item.user.provider){
+                    "kakao" -> socialImg.setImageResource(R.drawable.kakao_login_icon)
+                    "facebook" -> socialImg.setImageResource(R.drawable.facebook_login_icon)
+                    "naver" -> socialImg.setImageResource(R.drawable.naver_icon)
+                    "google" -> socialImg.setImageResource(R.drawable.google_login_icon)
+                }
+            }
 
         }
     }

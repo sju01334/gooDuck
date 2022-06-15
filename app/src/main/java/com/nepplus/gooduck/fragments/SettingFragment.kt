@@ -5,12 +5,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
@@ -197,7 +197,8 @@ class SettingFragment  : BaseFragment(){
             alert.binding.titleTxt.text = "로그 아웃"
             alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
             alert.binding.contentEdt1.visibility = View.GONE
-            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+            alert.binding.positiveBtn.setTextColor(ContextCompat.getColor(mContext, R.color.red))
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_stroke_1dp)
         }
 
         binding.manageCardLayout.setOnClickListener{
@@ -264,7 +265,7 @@ class SettingFragment  : BaseFragment(){
             })
             alert.binding.titleTxt.text = "회원 탈퇴"
             alert.binding.bodyTxt.text = "정말 탈퇴 하시겠습니까 ?\n탈퇴를 원하시면 '동의'라고 적어주세요"
-            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_yellow_stroke_1dp)
             
         }
     }

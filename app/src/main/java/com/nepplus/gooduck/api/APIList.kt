@@ -123,6 +123,9 @@ interface APIList {
     @GET("/review")
     fun getRequestAllReview() : Call<BasicResponse>
 
+    @GET("/review/ranking")
+    fun getRequestSortRank() : Call<BasicResponse>
+
     @Multipart
     @POST("/review")
     fun postRequestAddReview(

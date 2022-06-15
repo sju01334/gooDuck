@@ -54,6 +54,8 @@ class MarketRecyclerAdapter(
             binding.smallRecyclerView.adapter = mSmallAdapter
             binding.smallRecyclerView.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
 
+
+
         }
 
     }

@@ -81,7 +81,6 @@ class ReviewDetailActivity : BaseActivity() {
         binding.nickname.text = mReveiw.user.nickname
         binding.ratingBar.rating = mReveiw.score
         binding.createdAt.text = mReveiw.createdAt.substring(0, 10)
-        binding.productName.text = mReveiw.product.name
         binding.title.text = mReveiw.title
         binding.content.text = mReveiw.content
         Glide.with(mContext).load(mReveiw.thumImg).fitCenter().into(binding.thumbImg)
@@ -99,6 +98,11 @@ class ReviewDetailActivity : BaseActivity() {
                 "google" -> binding.socialImg.setImageResource(R.drawable.google_login_icon)
             }
         }
+
+        binding.productName.text = mReveiw.product.name
+        Glide.with(mContext).load(mReveiw.product.imageUrl).fitCenter().into(binding.productImage)
+        binding.price.text = "${mReveiw.product.price}원"
+
 
         mReplyAdatper = ReplyRecyclerAdapter(mContext, mReplyList)
         binding.replyRecyclerView.adapter = mReplyAdatper

@@ -22,14 +22,23 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="2dp"
+                android:rotation="90"
+                android:src="@drawable/reverse"/>
+
             <TextView
                 android:id="@+id/sortBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:paddingVertical="5dp"
                 android:text="등록순"
-                android:textColor="@color/black"
-                android:padding="5dp"
-                android:layout_marginRight="15dp"/>
+
+                android:textColor="@color/black" />
         </LinearLayout>
 
 

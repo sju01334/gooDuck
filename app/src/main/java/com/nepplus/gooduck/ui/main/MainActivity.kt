@@ -3,7 +3,6 @@ package com.nepplus.gooduck.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,7 +16,6 @@ import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.R.*
 import com.nepplus.gooduck.adapters.MainViewPagerAdapter
-import com.nepplus.gooduck.databinding.ActivityCardAddBinding.inflate
 import com.nepplus.gooduck.databinding.ActivityMainBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.ui.market.CartActivity
@@ -84,22 +82,25 @@ class MainActivity : BaseActivity(){
             alert.binding.titleTxt.text = "로그 아웃"
             alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
             alert.binding.contentEdt1.visibility = View.GONE
-            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_yellow_stroke_1dp)
         }
 
         myPage.setOnClickListener {  }
 
         manageReviewLayout.setOnClickListener{
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
             val myIntent = Intent(mContext, MyReviewListActivity::class.java)
             startActivity(myIntent)
         }
 
         manageBuyLayout.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
             val myIntent = Intent(mContext, PaymentListActivity::class.java)
             startActivity(myIntent)
         }
 
         managePointLayout.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
             val myIntent = Intent(mContext, PointListActivity::class.java)
             startActivity(myIntent)
         }

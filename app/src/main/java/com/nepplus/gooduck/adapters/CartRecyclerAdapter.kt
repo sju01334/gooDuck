@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nepplus.gooduck.R
@@ -187,7 +188,8 @@ class CartRecyclerAdapter(
                 alert.binding.contentEdt1.visibility = View.GONE
                 alert.binding.titleTxt.text = "장바구니 삭제"
                 alert.binding.bodyTxt.text = "${item.product.name} 을 삭제하시겠습니까?"
-                alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_rectangle_fill)
+                alert.binding.positiveBtn.setTextColor(ContextCompat.getColor(mContext, R.color.red))
+                alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_stroke_1dp)
 
 
 
