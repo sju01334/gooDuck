@@ -29,8 +29,6 @@ class ReviewRecyclerAdapter(
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        val ratingTxt = itemView.findViewById<TextView>(R.id.ratingTxt)
-        val price = itemView.findViewById<TextView>(R.id.price)
         val productName = itemView.findViewById<TextView>(R.id.productName)
         val reviewName = itemView.findViewById<TextView>(R.id.reviewName)
         val userName = itemView.findViewById<TextView>(R.id.userName)
@@ -40,12 +38,17 @@ class ReviewRecyclerAdapter(
 
         fun bind(item: Review) {
 
-            Glide.with(itemView.context).load(item.thumImg).fitCenter().into(image)
-            price.text = "${item.product.price}원"
-            productName.text = item.product.name
-            reviewName.text = item.title
-            ratingTxt.text = "(${item.score})"
-            userName.text = "작성자 : ${item.user.nickname}"
+            Glide.with(itemView.context).load(item.user.profileImg).fitCenter().into(image)
+            productName.text = "상품명 : ${item.product.name}"
+            if(item.content.length > 40){
+                var text = ""
+                text += item.content.substring(0, 40)
+                text += "....."
+                reviewName.text = text
+            }else{
+                reviewName.text = item.content
+            }
+            userName.text = item.user.nickname
             ratingBar.rating = item.score
 
         }

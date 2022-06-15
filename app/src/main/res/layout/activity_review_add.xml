@@ -114,7 +114,8 @@
                     <EditText
                         android:id="@+id/reviewContentEdt"
                         android:layout_width="match_parent"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
+                        android:scrollHorizontally="true"
                         android:layout_height="200dp"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/r5_lightgray_stroke_1dp"

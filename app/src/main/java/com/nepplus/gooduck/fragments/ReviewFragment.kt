@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.ReviewRecyclerAdapter
+import com.nepplus.gooduck.databinding.ActivityCardAddBinding.inflate
 import com.nepplus.gooduck.databinding.FragmentReviewBinding
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Review
@@ -64,6 +67,14 @@ class ReviewFragment  : BaseFragment(){
             startActivity(myIntent)
         }
 
+        val bottomSheetView = layoutInflater.inflate(R.layout.bottom_dialog, null)
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetView)
+
+        binding.sortBtn.setOnClickListener {
+            bottomSheetDialog.show()
+        }
+
     }
 
     override fun setValues() {
@@ -100,7 +111,7 @@ class ReviewFragment  : BaseFragment(){
     fun initAdapters(){
         mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
         binding.reviewRecyclerView.adapter = mReviewAdapter
-        binding.reviewRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
+        binding.reviewRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
         mReviewAdapter.notifyDataSetChanged()
 
