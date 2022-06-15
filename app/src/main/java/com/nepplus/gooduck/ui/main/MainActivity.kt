@@ -85,7 +85,10 @@ class MainActivity : BaseActivity(){
             alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_yellow_stroke_1dp)
         }
 
-        myPage.setOnClickListener {  }
+        myPage.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            binding.mainViewPager.currentItem = 2
+        }
 
         manageReviewLayout.setOnClickListener{
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -113,10 +116,10 @@ class MainActivity : BaseActivity(){
                 when (item.itemId) {
                     id.nav_home -> {
 
-                        Toast.makeText(mContext, "1111", Toast.LENGTH_SHORT).show()
-                        Log.d("눌렸니", "yes")
-                        val myIntent = Intent(mContext, CartActivity::class.java)
-                        startActivity(myIntent)
+//                        Toast.makeText(mContext, "1111", Toast.LENGTH_SHORT).show()
+//                        Log.d("눌렸니", "yes")
+//                        val myIntent = Intent(mContext, CartActivity::class.java)
+//                        startActivity(myIntent)
 
                     }
                     id.nav_gallery -> {}

@@ -46,7 +46,7 @@ class MarketDetailActivity : BaseActivity () {
 
         mDetailAdapter.setItemClickListener(object : MarketDetailRecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
-                Toast.makeText(mContext, position.toString(), Toast.LENGTH_SHORT).show()
+//                Toast.makeText(mContext, position.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 

@@ -25,7 +25,7 @@ class ReplyRecyclerAdapter(
             Glide.with(mContext).load(item.user.profileImg).fitCenter().into(binding.profileImg)
             binding.nickname.text = item.user.nickname
             binding.content.text = item.content
-            binding.createdAt.text = item.createdAt.substring(0, 10)
+            binding.createdAt.text = item.createdAt
         }
     }
 

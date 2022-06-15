@@ -46,6 +46,7 @@ class ReviewFragment  : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getAllReviewList()
 
         setupEvents()
 
@@ -54,7 +55,7 @@ class ReviewFragment  : BaseFragment(){
 
     override fun onResume() {
         super.onResume()
-        getAllReviewList()
+//        getAllReviewList()
 
     }
 
@@ -136,7 +137,7 @@ class ReviewFragment  : BaseFragment(){
     }
 
     override fun setValues() {
-
+        initAdapters()
     }
 
     fun getAllReviewList(){
@@ -179,7 +180,8 @@ class ReviewFragment  : BaseFragment(){
                         binding.reviewRecyclerView.visibility = View.VISIBLE
                         mReviewList.clear()
                         mReviewList.addAll(br.data.reviews)
-                        initAdapters()
+                        mReviewAdapter.notifyDataSetChanged()
+//                        initAdapters()
                     }
                     else {
                         binding.emptyLayout.visibility = View.VISIBLE
