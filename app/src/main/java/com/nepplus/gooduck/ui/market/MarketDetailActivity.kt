@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
@@ -60,7 +61,7 @@ class MarketDetailActivity : BaseActivity () {
 
         mDetailAdapter = MarketDetailRecyclerAdapter(mContext, mProductList)
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
-        binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
+        binding.marketDetailRecyclerView.layoutManager = GridLayoutManager(mContext,2)
 
     }
 

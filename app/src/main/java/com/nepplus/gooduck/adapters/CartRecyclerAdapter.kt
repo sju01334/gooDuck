@@ -18,7 +18,6 @@ import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Card
 import com.nepplus.gooduck.models.Cart
-import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.ui.market.CartActivity
 import com.nepplus.gooduck.ui.review.ReviewItemActivity
 import org.json.JSONObject
@@ -210,7 +209,7 @@ class CartRecyclerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val row = LayoutInflater.from(mContext).inflate(R.layout.list_item_detail, parent, false)
+        val row = LayoutInflater.from(mContext).inflate(R.layout.list_item_cart, parent, false)
         return ItemViewHolder(row)
     }
 

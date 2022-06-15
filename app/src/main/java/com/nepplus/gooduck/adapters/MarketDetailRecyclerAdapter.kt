@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
@@ -34,15 +35,13 @@ class MarketDetailRecyclerAdapter(
 
     private lateinit var itemClickListener : OnItemClickListener
 
-
-
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val name = itemView.findViewById<TextView>(R.id.name)
         val price = itemView.findViewById<TextView>(R.id.price)
         val originalPrice = itemView.findViewById<TextView>(R.id.originalPrice)
         val image = itemView.findViewById<ImageView>(R.id.image)
-        val addCartBtn = itemView.findViewById<CardView>(R.id.addCartBtn)
+        val addCartBtn = itemView.findViewById<FloatingActionButton>(R.id.addCartBtn)
         val reviewBtn = itemView.findViewById<TextView>(R.id.reviewBtn)
         val buyBtn = itemView.findViewById<TextView>(R.id.buyBtn)
 
