@@ -21,6 +21,7 @@ import com.nepplus.gooduck.models.Card
 import com.nepplus.gooduck.models.Cart
 import com.nepplus.gooduck.ui.market.CartActivity
 import com.nepplus.gooduck.ui.review.ReviewItemActivity
+import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,17 +36,17 @@ class CartRecyclerAdapter(
     private lateinit var itemClickListener : OnItemClickListener
 
 
-
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val name = itemView.findViewById<TextView>(R.id.name)
         val price = itemView.findViewById<TextView>(R.id.price)
-        val originalPrice = itemView.findViewById<TextView>(R.id.originalPrice)
         val image = itemView.findViewById<ImageView>(R.id.image)
-        val addCartBtn = itemView.findViewById<CardView>(R.id.addCartBtn)
         val reviewBtn = itemView.findViewById<TextView>(R.id.reviewBtn)
-        val deleteBtn = itemView.findViewById<TextView>(R.id.deleteBtn)
+        val deleteBtn = itemView.findViewById<ImageView>(R.id.deleteBtn)
         val buyBtn = itemView.findViewById<TextView>(R.id.buyBtn)
+        val storeName = itemView.findViewById<TextView>(R.id.storeName)
+        val checkbox = itemView.findViewById<CheckBox>(R.id.checkbox)
+
 
         val apiList = ServerApi.getRetrofit(mContext).create(APIList::class.java)
 
@@ -130,19 +131,19 @@ class CartRecyclerAdapter(
             })
         }
 
-
-
-
         fun bindCart(item : Cart){
+
+//            장바구니 체크이벤트
+            checkbox.setOnClickListener {
+                item.isChecked = !item.isChecked
+                notifyDataSetChanged()
+            }
+            checkbox.isChecked = item.isChecked
 
             name.text = item.product.name
             price.text = "${item.product.price}원"
-            originalPrice.text = "${String.format("%.0f",item.product.price * 1.3)}원"
-            originalPrice.paintFlags = originalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            storeName.text = item.product.store.name
             Glide.with(mContext).load(item.product.imageUrl).fitCenter().into(image)
-
-            addCartBtn.visibility = View.GONE
-            deleteBtn.visibility = View.VISIBLE
 
             deleteBtn.setOnClickListener {
 
@@ -187,12 +188,9 @@ class CartRecyclerAdapter(
 
                 alert.binding.contentEdt1.visibility = View.GONE
                 alert.binding.titleTxt.text = "장바구니 삭제"
-                alert.binding.bodyTxt.text = "${item.product.name} 을 삭제하시겠습니까?"
+                alert.binding.bodyTxt.text = "${item.product.name}을/를 상품을 삭제하시겠습니까?"
                 alert.binding.positiveBtn.setTextColor(ContextCompat.getColor(mContext, R.color.red))
                 alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_stroke_1dp)
-
-
-
 
             }
 
@@ -221,22 +219,18 @@ class CartRecyclerAdapter(
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
+
     }
 
     override fun getItemCount(): Int {
         return mCartLsit.size
     }
 
+
     interface OnItemClickListener{fun onClick(v : View , position: Int)}
 
     fun setItemClickListener(onItemClickListener: OnItemClickListener){
         this.itemClickListener = onItemClickListener
     }
-
-
-
-
-
-
 
 }

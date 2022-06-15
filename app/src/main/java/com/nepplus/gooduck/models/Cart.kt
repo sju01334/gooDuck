@@ -9,6 +9,7 @@ data class Cart(
     val userId : Int,
     @SerializedName("product_id")
     val productId : Int,
-    val product : Product
+    val product : Product,
+    var isChecked: Boolean = false
 ): Serializable {
 }

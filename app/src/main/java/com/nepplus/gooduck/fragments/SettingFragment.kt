@@ -265,7 +265,8 @@ class SettingFragment  : BaseFragment(){
             })
             alert.binding.titleTxt.text = "회원 탈퇴"
             alert.binding.bodyTxt.text = "정말 탈퇴 하시겠습니까 ?\n탈퇴를 원하시면 '동의'라고 적어주세요"
-            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_yellow_stroke_1dp)
+            alert.binding.positiveBtn.setTextColor(ContextCompat.getColor(mContext, R.color.red))
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_stroke_1dp)
             
         }
     }
