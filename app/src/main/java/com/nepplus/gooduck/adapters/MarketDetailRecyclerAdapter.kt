@@ -2,6 +2,7 @@ package com.nepplus.gooduck.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -137,7 +138,8 @@ class MarketDetailRecyclerAdapter(
 
             name.text = item.name
             price.text = "${item.price}원"
-            originalPrice.text = "${item.price * 1.3}원"
+            originalPrice.text = "${String.format("%.0f",item.price * 1.3)}원"
+            originalPrice.paintFlags = originalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             Glide.with(mContext).load(item.imageUrl).fitCenter().into(image)
 
 
@@ -188,7 +190,8 @@ class MarketDetailRecyclerAdapter(
 
             name.text = item.product.name
             price.text = "${item.product.price}원"
-            originalPrice.text = "${item.product.price * 1.3}원"
+            originalPrice.text = "${String.format("%.0f",item.product.price * 1.3)}원"
+            originalPrice.paintFlags = originalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             Glide.with(mContext).load(item.product.imageUrl).fitCenter().into(image)
 
             addCartBtn.visibility = View.GONE
