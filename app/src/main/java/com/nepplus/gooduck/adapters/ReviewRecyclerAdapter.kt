@@ -19,6 +19,7 @@ import com.nepplus.gooduck.models.SmallCategory
 import com.nepplus.gooduck.ui.market.MarketDetailActivity
 import com.willy.ratingbar.ScaleRatingBar
 import de.hdodenhof.circleimageview.CircleImageView
+import org.w3c.dom.Text
 
 class ReviewRecyclerAdapter(
     val mContext: Context,
@@ -35,6 +36,7 @@ class ReviewRecyclerAdapter(
         val userName = itemView.findViewById<TextView>(R.id.userName)
         val ratingBar = itemView.findViewById<ScaleRatingBar>(R.id.ratingBar)
         val socialImg = itemView.findViewById<CircleImageView>(R.id.socialImg)
+        val createAt = itemView.findViewById<TextView>(R.id.createdAt)
 
         val image = itemView.findViewById<ImageView>(R.id.image)
 
@@ -52,6 +54,7 @@ class ReviewRecyclerAdapter(
             }
             userName.text = item.user.nickname
             ratingBar.rating = item.score
+            createAt.text = item.createdAt.substring(0,10)
 
             if(item.user.provider != "default"){
                 socialImg.visibility = View.VISIBLE
