@@ -49,7 +49,6 @@ class ServerApi {
                     .client(myClient)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
-
             }
 
             return retrofit!!

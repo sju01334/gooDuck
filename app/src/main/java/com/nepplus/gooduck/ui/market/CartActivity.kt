@@ -80,10 +80,12 @@ class CartActivity : BaseActivity () {
                                 if(response.isSuccessful){
                                     val br = response.body()!!
                                     Log.d("선택된 장바구니 상품 삭제 완료", br.message)
-                                    if(i == selectedData.size){
+                                    if(i == selectedData[selectedData.size-1]){
                                         getProductData()
+                                        binding.totalChk.isChecked = false
                                         Toast.makeText(mContext, "삭제 완료되었습니다", Toast.LENGTH_SHORT).show()
-                                        alert.dialog.dismiss()
+
+
                                     }
                                 }else {
                                     val errorBody = response.errorBody()!!.string()
@@ -101,6 +103,8 @@ class CartActivity : BaseActivity () {
                             }
                         })
                     }
+
+                    alert.dialog.dismiss()
 
                 }
 
@@ -130,8 +134,6 @@ class CartActivity : BaseActivity () {
         mDetailAdapter = CartRecyclerAdapter(mContext,  mCartList)
         binding.marketDetailRecyclerView.adapter = mDetailAdapter
         binding.marketDetailRecyclerView.layoutManager = LinearLayoutManager(mContext)
-
-
 
 
     }
