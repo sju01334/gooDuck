@@ -36,10 +36,6 @@ class PointListActivity : BaseActivity() {
 
     override fun setupEvents() {
 
-        mPointAdapter = PointRecyclerAdapter(mContext, mPointList)
-        binding.pointRecyclerView.adapter = mPointAdapter
-        binding.pointRecyclerView.layoutManager = LinearLayoutManager(mContext)
-
 
     }
 
@@ -51,6 +47,11 @@ class PointListActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "포인트 적립내역"
+
+
+        mPointAdapter = PointRecyclerAdapter(mContext, mPointList)
+        binding.pointRecyclerView.adapter = mPointAdapter
+        binding.pointRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
 
 

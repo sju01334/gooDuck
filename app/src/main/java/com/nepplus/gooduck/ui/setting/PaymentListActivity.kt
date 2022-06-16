@@ -50,6 +50,9 @@ class PaymentListActivity : BaseActivity() {
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "내 구매 목록"
 
+        mPaymentAdapter = PaymentRecyclerAdapter(mContext, mPaymentList)
+        binding.purchaseRecyclerView.adapter = mPaymentAdapter
+        binding.purchaseRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
     }
 
@@ -65,12 +68,13 @@ class PaymentListActivity : BaseActivity() {
                        binding.purchaseRecyclerView.visibility = View.VISIBLE
                        mPaymentList.clear()
                        mPaymentList.addAll(br.data.payments)
-                       initAdapters()
                    }
                    else {
                        binding.emptyLayout.visibility = View.VISIBLE
                        binding.purchaseRecyclerView.visibility = View.GONE
                    }
+
+                   mPaymentAdapter.notifyDataSetChanged()
 
 
                }
@@ -82,19 +86,5 @@ class PaymentListActivity : BaseActivity() {
         })
     }
 
-    fun initAdapters(){
-        mPaymentAdapter = PaymentRecyclerAdapter(mContext, mPaymentList)
-        binding.purchaseRecyclerView.adapter = mPaymentAdapter
-        binding.purchaseRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
-        mPaymentAdapter.notifyDataSetChanged()
-
-//        mPaymentAdapter.setItemClickListener(object : ReviewRecyclerAdapter.OnItemClickListener{
-//            override fun onClick(v: View, position: Int) {
-//                val myIntent = Intent(mContext, ReviewDetailActivity::class.java)
-//                myIntent.putExtra("review", mReviewList[position])
-//                startActivity(myIntent)
-//            }
-//        })
-    }
 }

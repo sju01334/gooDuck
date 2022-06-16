@@ -55,6 +55,10 @@ class CardManagementActivity : BaseActivity() {
         subTitleTxt.text = "내 카드 목록"
         background.setBackgroundColor(getColor(R.color.secondary))
 
+        mCardAdapter = CardRecyclerAdapter(mContext, mCardList)
+        binding.cardRecyclerView.adapter = mCardAdapter
+        binding.cardRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
 
     }
 
@@ -71,11 +75,13 @@ class CardManagementActivity : BaseActivity() {
                         binding.cardRecyclerView.visibility = View.VISIBLE
                         mCardList.clear()
                         mCardList.addAll(br.data.cards)
-                        initAdapters()
+
+//                        initAdapters()
                     }else {
                         binding.emptyLayout.visibility = View.VISIBLE
                         binding.cardRecyclerView.visibility = View.GONE
                     }
+                    mCardAdapter.notifyDataSetChanged()
                 }
             }
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
@@ -83,11 +89,4 @@ class CardManagementActivity : BaseActivity() {
         })
     }
 
-    fun initAdapters(){
-        mCardAdapter = CardRecyclerAdapter(mContext, mCardList)
-        binding.cardRecyclerView.adapter = mCardAdapter
-        binding.cardRecyclerView.layoutManager = LinearLayoutManager(mContext)
-
-        mCardAdapter.notifyDataSetChanged()
-    }
 }

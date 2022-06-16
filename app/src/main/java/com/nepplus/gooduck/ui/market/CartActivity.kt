@@ -80,7 +80,11 @@ class CartActivity : BaseActivity () {
                                 if(response.isSuccessful){
                                     val br = response.body()!!
                                     Log.d("선택된 장바구니 상품 삭제 완료", br.message)
-
+                                    if(i == selectedData.size){
+                                        getProductData()
+                                        Toast.makeText(mContext, "삭제 완료되었습니다", Toast.LENGTH_SHORT).show()
+                                        alert.dialog.dismiss()
+                                    }
                                 }else {
                                     val errorBody = response.errorBody()!!.string()
                                     val jsonObj = JSONObject(errorBody)
@@ -97,10 +101,6 @@ class CartActivity : BaseActivity () {
                             }
                         })
                     }
-                    getProductData()
-                    Toast.makeText(mContext, "삭제 완료되었습니다", Toast.LENGTH_SHORT).show()
-                    alert.dialog.dismiss()
-
 
                 }
 
@@ -143,6 +143,7 @@ class CartActivity : BaseActivity () {
                     val br = response.body()!!
                     mCartList.clear()
                     mCartList.addAll(br.data.carts)
+                    Log.d("로그로그",mCartList.size.toString())
 
                     binding.cnt.text = "(${mCartList.size})"
                     binding.totalPrice.text = "${br.data.carts.sumOf { it.product.price }}원"

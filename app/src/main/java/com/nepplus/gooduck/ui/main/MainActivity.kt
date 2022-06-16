@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
@@ -82,7 +83,8 @@ class MainActivity : BaseActivity(){
             alert.binding.titleTxt.text = "로그 아웃"
             alert.binding.bodyTxt.text = "정말 로그아웃 하시겠습니까 ?"
             alert.binding.contentEdt1.visibility = View.GONE
-            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_yellow_stroke_1dp)
+            alert.binding.positiveBtn.setTextColor(ContextCompat.getColor(mContext, R.color.red))
+            alert.binding.positiveBtn.setBackgroundResource(R.drawable.r5_red_stroke_1dp)
         }
 
         myPage.setOnClickListener {

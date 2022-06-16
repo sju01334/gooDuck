@@ -57,6 +57,8 @@ class MyReviewListActivity : BaseActivity() {
         backBtn.visibility = View.VISIBLE
         subTitleTxt.visibility = View.VISIBLE
         subTitleTxt.text = "내 리뷰 목록"
+
+        initAdapters()
     }
 
     fun getMyReviewList(){
@@ -71,12 +73,14 @@ class MyReviewListActivity : BaseActivity() {
                         binding.reviewRecyclerView.visibility = View.VISIBLE
                         mReviewList.clear()
                         mReviewList.addAll(br.data.reviews)
-                        initAdapters()
+//                        initAdapters()
                     }
                     else {
                         binding.emptyLayout.visibility = View.VISIBLE
                         binding.reviewRecyclerView.visibility = View.GONE
                     }
+                    mReviewAdapter.notifyDataSetChanged()
+
 
                 }
             }
@@ -90,7 +94,7 @@ class MyReviewListActivity : BaseActivity() {
         binding.reviewRecyclerView.adapter = mReviewAdapter
         binding.reviewRecyclerView.layoutManager = LinearLayoutManager(mContext)
 
-        mReviewAdapter.notifyDataSetChanged()
+
 
         mReviewAdapter.setItemClickListener(object : ReviewRecyclerAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
