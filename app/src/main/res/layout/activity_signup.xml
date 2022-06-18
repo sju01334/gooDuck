@@ -39,7 +39,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center_vertical">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nicknameEdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center_vertical">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,35 +96,51 @@
                 android:text="중복체크"/>
 
 
-
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/passwordEdt"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            android:hint=" ">
+
+            <EditText
+                android:id="@+id/passwordEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/r5_lightgray_stroke_1dp"
+                android:drawableStart="@drawable/resize_lock_yellow"
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:hint="비밀번호"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:background="@drawable/r5_lightgray_stroke_1dp"
-            android:drawableStart="@drawable/resize_lock_yellow"
-            android:drawablePadding="10dp"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:hint="비밀번호"/>
-
-
-        <EditText
-            android:id="@+id/pwCheckEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingTop="13dp"
-            android:paddingLeft="50dp"
-            android:paddingBottom="13dp"
-            android:background="@drawable/r5_lightgray_stroke_1dp"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:hint="비밀번호 확인"/>
+            app:passwordToggleEnabled="true"
+            android:hint=" ">
+
+            <EditText
+                android:id="@+id/pwCheckEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="13dp"
+                android:paddingLeft="50dp"
+                android:paddingBottom="13dp"
+                android:background="@drawable/r5_lightgray_stroke_1dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:hint="   비밀번호 확인"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
             android:id="@+id/phoneEdt"
@@ -135,7 +151,7 @@
             android:background="@drawable/r5_lightgray_stroke_1dp"
             android:drawableStart="@drawable/resize_phone_yellow"
             android:drawablePadding="10dp"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:hint="핸드폰 번호"/>
         <Space
@@ -147,6 +163,7 @@
             android:id="@+id/signUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
             android:background="@drawable/r50_yellow_fill"
             android:textSize="@dimen/buttonTxt"
             android:text="가입하기"

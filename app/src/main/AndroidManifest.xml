@@ -47,23 +47,23 @@
         <activity
             android:name=".ui.signup.SearchPasswordActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity
             android:name=".ui.signup.SearchEmailActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity
             android:name=".ui.signup.SignupActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity
             android:name=".ui.main.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.GooDuck.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

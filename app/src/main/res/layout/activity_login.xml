@@ -28,25 +28,38 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <EditText
-            android:id="@+id/emailEdt"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/resize_email_yellow"
+                android:drawablePadding="10dp"
+                android:hint="이메일"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/r5_lightgray_stroke_1dp"
-            android:drawableStart="@drawable/resize_email_yellow"
-            android:drawablePadding="10dp"
-            android:hint="이메일"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:padding="10dp" />
+            app:passwordToggleEnabled="true">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:padding="10dp"
-            android:background="@drawable/r5_lightgray_stroke_1dp"
             android:drawableStart="@drawable/resize_lock_yellow"
             android:drawablePadding="5dp"
             android:inputType="textPassword"
@@ -59,15 +72,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="자동 로그인"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/white"
-            android:background="@drawable/r50_white_fill"
+            app:cornerRadius="50dp"
             android:text="로그인"
+            android:padding="12dp"
             android:textColor="@color/primary"
             android:textSize="@dimen/buttonTxt" />
 
@@ -75,9 +90,10 @@
             android:id="@+id/signUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/r50_yellow_fill"
+            android:layout_marginTop="5dp"
             android:text="회원가입"
+            app:cornerRadius="50dp"
+            android:padding="12dp"
             android:textColor="@color/white"
             android:textSize="@dimen/buttonTxt" />
 

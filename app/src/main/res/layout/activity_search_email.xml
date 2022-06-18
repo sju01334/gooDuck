@@ -48,7 +48,7 @@
             android:id="@+id/phoneEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:padding="10dp"
             android:background="@drawable/r5_lightgray_stroke_1dp"
             android:drawableStart="@drawable/resize_phone_yellow"
