@@ -1,13 +1,11 @@
 package com.nepplus.gooduck.ui.signup
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
-import com.nepplus.gooduck.databinding.ActivitySearchEmailBinding
 import com.nepplus.gooduck.databinding.ActivitySearchPasswordBinding
 import com.nepplus.gooduck.models.BasicResponse
 import org.json.JSONObject
@@ -56,11 +54,11 @@ class SearchPasswordActivity : BaseActivity() {
     }
 
     fun searchEmail(nickname : String, email : String){
-        apiList.getReqeustFindPw(nickname, email).enqueue(object : Callback<BasicResponse>{
+        apiList.postReqeustFindPw(nickname, email).enqueue(object : Callback<BasicResponse>{
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
                 if(response.isSuccessful){
                     val br = response.body()!!
-                    Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, "이메일을 확인해주세요", Toast.LENGTH_SHORT).show()
                     finish()
                 }else{
                     val errorBodyStr = response.errorBody()!!.string()
@@ -78,7 +76,7 @@ class SearchPasswordActivity : BaseActivity() {
             }
 
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-                
+                Log.d("호출 실패", t.toString())
             }
         })
     }

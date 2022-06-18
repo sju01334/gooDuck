@@ -55,10 +55,11 @@ interface APIList {
         @Query("phone") phone : String
     ) : Call<BasicResponse>
 
-    @GET("/user/find/password")
-    fun getReqeustFindPw(
-        @Query("nick_name") nickname : String,
-        @Query("email") email : String
+    @FormUrlEncoded
+    @POST("/user/find/password")
+    fun postReqeustFindPw(
+        @Field("nick_name") nickname : String,
+        @Field("email") email : String
     ) : Call<BasicResponse>
 
     @FormUrlEncoded
