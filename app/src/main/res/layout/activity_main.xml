@@ -8,54 +8,72 @@
         android:layout_height="match_parent"
         tools:openDrawer="start">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".ui.main.MainActivity">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/mainToolbar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".ui.main.MainActivity">
 
-                <TextView
-                    android:id="@+id/titleTxt"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/mainToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/titleTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GooDuck"
+                        android:fontFamily="@font/fugaz_one"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:layout_gravity="center"/>
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/mainViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNav"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="GooDuck"
-                    android:fontFamily="@font/fugaz_one"
-                    android:textColor="@color/black"
-                    android:textSize="30sp"
-                    android:layout_gravity="center"/>
-
-            </androidx.appcompat.widget.Toolbar>
+                    android:layout_marginBottom="2dp"
+                    app:menu="@menu/bottom_nav_menu"
+                    android:background="@drawable/custom_navi_gray"/>
 
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/mainViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+            </LinearLayout>
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNav"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                app:menu="@menu/bottom_nav_menu"
-                android:background="@drawable/custom_navi_gray"/>
-
-
-        </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navView"
             android:layout_width="320dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/side_nav_menu"
-            app:headerLayout="@layout/side_navi_header"/>
+            android:layout_gravity="start">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/sideNaviHeader"
+                        layout="@layout/side_navi_header"/>
+
+                    <ExpandableListView
+                        android:id="@+id/expandListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false"
+                        android:groupIndicator="@null" />
+                </LinearLayout>
+
+        </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

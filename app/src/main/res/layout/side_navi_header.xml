@@ -1,157 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/secondary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        android:orientation="vertical"
-        android:padding="15dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/titleTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GooDuck"
-            android:fontFamily="@font/fugaz_one"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/Txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="안녕하세요 홍길동 님"
-            android:textColor="@color/black" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:background="@color/secondary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:gravity="center_vertical">
 
-            <Button
-                android:id="@+id/logoutBtn"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:layout_marginRight="5dp"
-                android:textColor="@color/mediumGray"
-                android:layout_weight="1"
-                android:text="LOGOUT"/>
+                android:text="GooDuck"
+                android:fontFamily="@font/fugaz_one"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-            <Button
-                android:id="@+id/myPageBtn"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/Txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/mediumGray"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="My Page"/>
+                android:layout_marginTop="5dp"
+                android:text="안녕하세요 홍길동 님"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/logoutBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/mediumGray"
+                    android:layout_weight="1"
+                    android:text="LOGOUT"/>
+
+                <Button
+                    android:id="@+id/myPageBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/mediumGray"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="My Page"/>
 
 
 
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/r0_lightgray_stroke_0_5dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/manageBuyLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/truck"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:text="주문"/>
+
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/mediumGray" />
+
+                <LinearLayout
+                    android:id="@+id/manageReviewLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:src="@drawable/list" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:text="리뷰" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/mediumGray" />
+
+
+                <LinearLayout
+                    android:id="@+id/managePointLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/point"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:text="포인트" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/r0_lightgray_stroke_0_5dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/manageBuyLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-               android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/truck"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:text="주문"/>
-
-
-
-            </LinearLayout>
-            <View
-                android:layout_width="0.5dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/mediumGray" />
-
-            <LinearLayout
-                android:id="@+id/manageReviewLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:padding="5dp"
-                    android:src="@drawable/list" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:text="리뷰" />
-
-
-            </LinearLayout>
-            <View
-                android:layout_width="0.5dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/mediumGray" />
-
-
-            <LinearLayout
-                android:id="@+id/managePointLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/point"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:text="포인트" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
 </layout>
