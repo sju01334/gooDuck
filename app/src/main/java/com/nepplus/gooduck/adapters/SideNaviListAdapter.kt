@@ -15,7 +15,7 @@ import kotlin.collections.ArrayList
 class SideNaviListAdapter(
     val mContext: Context,
     val titleList: List<String>,
-    val dataList: HashMap<String, List<String>>
+    val dataList: LinkedHashMap<String, List<String>>
 ) : BaseExpandableListAdapter(){
 
     override fun getGroupCount(): Int {
@@ -83,4 +83,5 @@ class SideNaviListAdapter(
     override fun isChildSelectable(p0: Int, p1: Int): Boolean {
         return true
     }
+
 }

@@ -55,23 +55,51 @@
             android:layout_width="320dp"
             android:layout_height="match_parent"
             android:layout_gravity="start">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:fillViewport="true"
+                android:scrollbars="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/secondary"
+                    android:paddingBottom="20dp"
                     android:orientation="vertical">
 
                     <include
                         android:id="@+id/sideNaviHeader"
                         layout="@layout/side_navi_header"/>
 
-                    <ExpandableListView
-                        android:id="@+id/expandListView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:nestedScrollingEnabled="false"
-                        android:groupIndicator="@null" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Category"
+                            android:padding="10dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:textColor="@color/black"
+                            android:background="@color/white"
+                            android:textSize="16sp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@color/mediumGray" />
+                        <ExpandableListView
+                            android:id="@+id/expandListView"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:overScrollMode="never"
+                            android:groupIndicator="@null" />
+
+
+
                 </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
 
         </com.google.android.material.navigation.NavigationView>
 

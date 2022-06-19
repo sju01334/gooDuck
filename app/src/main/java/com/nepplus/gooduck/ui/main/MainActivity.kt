@@ -2,9 +2,12 @@ package com.nepplus.gooduck.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ExpandableListAdapter
+import android.widget.ExpandableListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -20,6 +23,7 @@ import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Category
 import com.nepplus.gooduck.ui.market.CartActivity
+import com.nepplus.gooduck.ui.market.MarketDetailActivity
 import com.nepplus.gooduck.ui.setting.MyReviewListActivity
 import com.nepplus.gooduck.ui.setting.PaymentListActivity
 import com.nepplus.gooduck.ui.setting.PointListActivity
@@ -39,7 +43,10 @@ class MainActivity : BaseActivity(){
     var mCategoryList = ArrayList<Category>()
 
     var titleList = ArrayList<String>()
-    val dataList = HashMap<String, List<String>>()
+    val dataList = LinkedHashMap<String, List<String>>()
+
+
+    var lastClickedPosition = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -213,19 +220,84 @@ class MainActivity : BaseActivity(){
                     titleList.addAll(name)
                     for( i in 0 until titleList.size){
                         val child = ArrayList<String>()
-                        child.addAll(br.data.categories[i].smallCategories.map { it.name })
+                        child.addAll(mCategoryList[i].smallCategories.map { it.name })
                         dataList[name[i]] = child
                     }
+
+                    Log.d("titleList", titleList.toString())
+
+                    Log.d("dataList", dataList.toString())
 
                     titleList = ArrayList(dataList.keys)
                     val expandAdapter = SideNaviListAdapter(mContext, titleList, dataList)
                     binding.expandListView.setAdapter(expandAdapter)
+
+                    binding.expandListView.setOnChildClickListener { parent, view, groupPosition, childPosition, id ->
+//                        Toast.makeText(mContext, groupPosition.toString(), Toast.LENGTH_SHORT).show()
+                        val myIntent = Intent(mContext, MarketDetailActivity::class.java)
+                        myIntent.putExtra("sCategories", mCategoryList[groupPosition].smallCategories[childPosition])
+                        mContext.startActivity(myIntent)
+                        false
+                    }
+
+
+                    binding.expandListView.setOnGroupClickListener { parent, view, groupPosition, id ->
+                        setListViewHeight(parent, groupPosition)
+                        // 선택 한 groupPosition의 펼침/닫힘 상태 체크
+                        val isExpand: Boolean = !parent.isGroupExpanded(groupPosition)
+
+                        // 이 전에 열려있던 group 닫기
+                        parent.collapseGroup(lastClickedPosition)
+
+                        if (isExpand) {
+                            parent.expandGroup(groupPosition)
+                        }
+                        lastClickedPosition = groupPosition
+
+                        true
+                    }
 
                 }
             }
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
             }
         })
+    }
+
+    private fun setListViewHeight(
+        listView: ExpandableListView,
+        group: Int
+    ) {
+        val listAdapter = listView.expandableListAdapter as ExpandableListAdapter
+        var totalHeight = 0
+        val desiredWidth = View.MeasureSpec.makeMeasureSpec(
+            listView.width,
+            View.MeasureSpec.EXACTLY
+        )
+        for (i in 0 until listAdapter.groupCount) {
+            val groupItem = listAdapter.getGroupView(i, false, null, listView)
+            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
+            totalHeight += groupItem.measuredHeight
+            if (listView.isGroupExpanded(i) && i != group
+                || !listView.isGroupExpanded(i) && i == group
+            ) {
+                for (j in 0 until listAdapter.getChildrenCount(i)) {
+                    val listItem = listAdapter.getChildView(
+                        i, j, false, null,
+                        listView
+                    )
+                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
+                    totalHeight += listItem.measuredHeight
+                }
+            }
+        }
+        val params = listView.layoutParams
+        var height = (totalHeight
+                + listView.dividerHeight * (listAdapter.groupCount - 1))
+        if (height < 10) height = 200
+        params.height = height
+        listView.layoutParams = params
+        listView.requestLayout()
     }
 
 }
