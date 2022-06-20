@@ -2,13 +2,11 @@ package com.nepplus.gooduck.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Paint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,9 +17,8 @@ import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Card
 import com.nepplus.gooduck.models.Cart
-import com.nepplus.gooduck.ui.market.CartActivity
+import com.nepplus.gooduck.ui.main.CartActivity
 import com.nepplus.gooduck.ui.review.ReviewItemActivity
-import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

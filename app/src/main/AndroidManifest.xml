@@ -15,6 +15,10 @@
         android:theme="@style/Theme.GooDuck"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.main.SearchActivity"
+            android:theme="@style/Theme.GooDuck.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".ui.setting.PointListActivity"
             android:exported="false" />
         <activity
@@ -39,7 +43,7 @@
             android:name=".ui.review.ReviewItemActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.market.CartActivity"
+            android:name=".ui.main.CartActivity"
             android:exported="false" />
         <activity
             android:name=".ui.market.MarketDetailActivity"
@@ -57,7 +61,7 @@
             android:exported="false"
             android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity
-            android:name=".ui.main.LoginActivity"
+            android:name=".ui.signup.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.GooDuck.NoActionBar" />
         <activity

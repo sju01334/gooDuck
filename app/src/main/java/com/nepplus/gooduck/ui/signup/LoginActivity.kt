@@ -1,4 +1,4 @@
-package com.nepplus.gooduck.ui.main
+package com.nepplus.gooduck.ui.signup
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,9 +13,7 @@ import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.ActivityLoginBinding
 import com.nepplus.gooduck.models.BasicResponse
-import com.nepplus.gooduck.ui.signup.SearchEmailActivity
-import com.nepplus.gooduck.ui.signup.SearchPasswordActivity
-import com.nepplus.gooduck.ui.signup.SignupActivity
+import com.nepplus.gooduck.ui.main.MainActivity
 import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import org.json.JSONObject

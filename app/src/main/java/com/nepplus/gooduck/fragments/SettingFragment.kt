@@ -19,7 +19,7 @@ import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.FragmentSettingBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
-import com.nepplus.gooduck.ui.main.LoginActivity
+import com.nepplus.gooduck.ui.signup.LoginActivity
 import com.nepplus.gooduck.ui.setting.CardManagementActivity
 import com.nepplus.gooduck.ui.setting.MyReviewListActivity
 import com.nepplus.gooduck.ui.setting.PaymentListActivity

@@ -1,4 +1,4 @@
-package com.nepplus.gooduck.ui.market
+package com.nepplus.gooduck.ui.main
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.adapters.CartRecyclerAdapter
-import com.nepplus.gooduck.adapters.MarketDetailRecyclerAdapter
 import com.nepplus.gooduck.databinding.ActivityCartBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse

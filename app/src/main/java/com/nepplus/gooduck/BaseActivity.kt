@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.nepplus.gooduck.api.APIList
 import com.nepplus.gooduck.api.ServerApi
-import com.nepplus.gooduck.ui.market.CartActivity
+import com.nepplus.gooduck.ui.main.CartActivity
 import retrofit2.Retrofit
 
 

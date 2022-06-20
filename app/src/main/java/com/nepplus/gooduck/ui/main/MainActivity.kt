@@ -22,11 +22,11 @@ import com.nepplus.gooduck.databinding.ActivityMainBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
 import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Category
-import com.nepplus.gooduck.ui.market.CartActivity
 import com.nepplus.gooduck.ui.market.MarketDetailActivity
 import com.nepplus.gooduck.ui.setting.MyReviewListActivity
 import com.nepplus.gooduck.ui.setting.PaymentListActivity
 import com.nepplus.gooduck.ui.setting.PointListActivity
+import com.nepplus.gooduck.ui.signup.LoginActivity
 import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import retrofit2.Call
@@ -110,26 +110,6 @@ class MainActivity : BaseActivity(){
         }
 
 
-//        binding.navView.setNavigationItemSelectedListener(object : NavigationView.OnNavigationItemSelectedListener{
-//            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//                when (item.itemId) {
-//                    id.nav_home -> {
-//
-////                        Toast.makeText(mContext, "1111", Toast.LENGTH_SHORT).show()
-////                        Log.d("눌렸니", "yes")
-////                        val myIntent = Intent(mContext, CartActivity::class.java)
-////                        startActivity(myIntent)
-//
-//                    }
-//                    id.nav_gallery -> {}
-//                    else  -> {}
-//                }
-//                binding.drawerLayout.closeDrawer(GravityCompat.START)
-//                return false
-//            }
-//        })
-
-
     }
 
     override fun setValues() {
@@ -178,10 +158,15 @@ class MainActivity : BaseActivity(){
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var myIntent = Intent()
         when(item.itemId){
             id.topNavCart -> {
-                val myInent = Intent(mContext, CartActivity::class.java)
-                startActivity(myInent)
+                myIntent = Intent(mContext, CartActivity::class.java)
+                startActivity(myIntent)
+            }
+            id.searchBtn -> {
+                myIntent = Intent(mContext, SearchActivity::class.java)
+                startActivity(myIntent)
             }
             else ->{
                 return true
@@ -224,9 +209,9 @@ class MainActivity : BaseActivity(){
                         dataList[name[i]] = child
                     }
 
-                    Log.d("titleList", titleList.toString())
-
-                    Log.d("dataList", dataList.toString())
+//                    Log.d("titleList", titleList.toString())
+//
+//                    Log.d("dataList", dataList.toString())
 
                     titleList = ArrayList(dataList.keys)
                     val expandAdapter = SideNaviListAdapter(mContext, titleList, dataList)

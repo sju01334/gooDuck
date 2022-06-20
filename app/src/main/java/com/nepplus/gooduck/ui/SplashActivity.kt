@@ -1,7 +1,6 @@
 package com.nepplus.gooduck.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,7 +11,7 @@ import com.kakao.sdk.common.util.Utility
 import com.nepplus.gooduck.BaseActivity
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.models.BasicResponse
-import com.nepplus.gooduck.ui.main.LoginActivity
+import com.nepplus.gooduck.ui.signup.LoginActivity
 import com.nepplus.gooduck.ui.main.MainActivity
 import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
