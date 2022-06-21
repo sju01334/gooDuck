@@ -22,6 +22,7 @@ import com.nepplus.gooduck.models.BasicResponse
 import com.nepplus.gooduck.models.Product
 import com.nepplus.gooduck.utils.URIPathHelper
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -273,7 +274,7 @@ class ReviewAddActivity : BaseActivity() {
                 val file = File(URIPathHelper().getPath(mContext, dataUri!!))
 
 //            파일을 retrofit 에 첨부할 수 있는 => ReqeustBody => MultipartBody  형태로 변환
-                val fileReqBody = RequestBody.create(MediaType.get("image/*"), file)
+                val fileReqBody = RequestBody.create("image/*".toMediaType(), file)
                 pic = MultipartBody.Part.createFormData("thumbnail_img", "myFile.jpg", fileReqBody)
 
             }

@@ -185,6 +185,7 @@
                 android:layout_weight="0.1"/>
 
             <ImageView
+                android:id="@+id/naverLoginBtn"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

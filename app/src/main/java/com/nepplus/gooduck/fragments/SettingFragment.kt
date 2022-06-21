@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,9 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
+import com.navercorp.nid.NaverIdLoginSDK
+import com.navercorp.nid.oauth.NidOAuthLogin
+import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.nepplus.gooduck.R
 import com.nepplus.gooduck.databinding.FragmentSettingBinding
 import com.nepplus.gooduck.dialog.CustomAlertDialog
@@ -28,6 +32,7 @@ import com.nepplus.gooduck.utils.ContextUtil
 import com.nepplus.gooduck.utils.GlobalData
 import com.nepplus.gooduck.utils.URIPathHelper
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -182,12 +187,16 @@ class SettingFragment  : BaseFragment(){
             val alert = CustomAlertDialog(mContext)
             alert.myDialog(object : CustomAlertDialog.ButtonClickListener{
                 override fun positiveBtnClicked() {
-                    alert.dialog.dismiss()
+                    if(GlobalData.loginUser!!.provider == "naver"){
+                        NaverIdLoginSDK.logout()
+                        startNaverDeleteToken()
+                    }
                     ContextUtil.clear(mContext)
                     GlobalData.loginUser = null
                     val myIntent = Intent(mContext, LoginActivity::class.java)
                     myIntent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    alert.dialog.dismiss()
                     startActivity(myIntent)
                 }
                 override fun negativeBtnClicked() {
@@ -307,7 +316,7 @@ class SettingFragment  : BaseFragment(){
                 val file = File(URIPathHelper().getPath(mContext, dataUri!!))
 
 //            파일을 retrofit 에 첨부할 수 있는 => ReqeustBody => MultipartBody  형태로 변환
-                val fileReqBody = RequestBody.create(MediaType.get("image/*"), file)
+                val fileReqBody = RequestBody.create("image/*".toMediaType(), file)
                 val body = MultipartBody.Part.createFormData("profile_image", "myFile.jpg", fileReqBody)
 
                 apiList.putRequestUserImage(body).enqueue(object : Callback<BasicResponse> {
@@ -330,4 +339,21 @@ class SettingFragment  : BaseFragment(){
 
             }
         }
+
+    fun startNaverDeleteToken(){
+        NidOAuthLogin().callDeleteTokenApi(mContext, object : OAuthLoginCallback {
+            override fun onSuccess() {
+               //서버에서 토큰 삭제에 성공한 상태입니다.
+            }
+            override fun onFailure(httpStatus: Int, message: String) {
+                // 서버에서 토큰 삭제에 실패했어도 클라이언트에 있는 토큰은 삭제되어 로그아웃된 상태입니다.
+                // 클라이언트에 토큰 정보가 없기 때문에 추가로 처리할 수 있는 작업은 없습니다.
+                Log.d("naver", "errorCode: ${NaverIdLoginSDK.getLastErrorCode().code}")
+                Log.d("naver", "errorDesc: ${NaverIdLoginSDK.getLastErrorDescription()}")
+            }
+            override fun onError(errorCode: Int, message: String) {
+                onFailure(errorCode, message)
+            }
+        })
+    }
 }
