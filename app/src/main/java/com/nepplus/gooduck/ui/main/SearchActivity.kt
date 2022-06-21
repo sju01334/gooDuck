@@ -38,13 +38,7 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
 
-        recentList = ContextUtil.getRecentSearch(mContext)!!
-        binding.recentChipGroup.removeAllViews()
-        for( tag in recentList){
-            binding.recentChipGroup.addView(Chip(this).apply {
-                text = tag
-            })
-        }
+
 
         getCategoryList()
 
@@ -57,8 +51,10 @@ class SearchActivity : BaseActivity() {
         binding.searchBtn.setOnClickListener {
             val searchEdt = binding.searchEdt.text.toString()
 
+            if(recentList.size >= 10){
+                recentList.removeAt(0)
+            }
 
-            Log.d("recentList", recentList.toString())
             if(recentList.contains(searchEdt)){
                 recentList.remove(searchEdt)
                 recentList.add(searchEdt)
@@ -68,6 +64,7 @@ class SearchActivity : BaseActivity() {
 
             recentList.reverse()
             ContextUtil.setRecentSearch(mContext, recentList)
+            recentList.reverse()
 
             if(searchEdt.isEmpty()){
                 Toast.makeText(mContext, "검색어를 입력해 주세요", Toast.LENGTH_SHORT).show()
@@ -75,40 +72,8 @@ class SearchActivity : BaseActivity() {
             }
 
             val list = mSmallCategoryList.filter { it.name == searchEdt }
-            Log.d("list사이즈", list.toString())
-                loop@
-                for(i in 1..mSmallCategoryList.size){
-                    apiList.getRequestProducts(i).enqueue(object : Callback<BasicResponse>{
-                        override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
-                            if(response.isSuccessful){
-                                val br = response.body()!!
-                                mProductList.clear()
-                                mProductList.addAll(br.data.products)
-                                val ll = mProductList.filter { it.name == searchEdt }
-                                if(ll.isNotEmpty()){
-                                    mProduct.clear()
-                                    mProduct.addAll(ll)
-                                    mDetailAdapter.notifyDataSetChanged()
-                                    Log.d("mProductList", mProduct.toString())
-                                    binding.emptyLayout.visibility = View.GONE
-                                    binding.searchListRecyclerView.visibility = View.VISIBLE
-                                    return
-                                }else{
-//                                    if(i == mSmallCategoryList.size){
-//                                        Toast.makeText(mContext, "해당 상품이 존재하지 않습니다", Toast.LENGTH_SHORT).show()
-//                                    }
-                                }
+            getSearchedProduct(searchEdt)
 
-
-
-                            }
-                        }
-                        override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-
-                        }
-                    })
-
-                }
 
 
         }
@@ -116,15 +81,25 @@ class SearchActivity : BaseActivity() {
         binding.searchEdt.addTextChangedListener {
             if(it.toString().isEmpty()){
                 binding.emptyLayout.visibility = View.VISIBLE
+                binding.recentSearchLayout.visibility = View.VISIBLE
                 binding.searchListRecyclerView.visibility = View.GONE
                 binding.recentChipGroup.removeAllViews()
+                recentList.reverse()
+//                Log.d("리스트", recentList.toString())
                 for( tag in recentList){
                     binding.recentChipGroup.addView(Chip(this).apply {
                         text = tag
+                        setOnClickListener {
+                            getSearchedProduct(text.toString())
+                            binding.searchEdt.setText(text.toString())
+
+                        }
                     })
                 }
+                recentList.reverse()
             }
         }
+
 
         binding.eraseSearchList.setOnClickListener {
             ContextUtil.clearTag(mContext, "RECENT_SEARCH")
@@ -160,6 +135,45 @@ class SearchActivity : BaseActivity() {
         binding.searchListRecyclerView.layoutManager = GridLayoutManager(mContext,2)
 
 
+        recentList = ContextUtil.getRecentSearch(mContext)!!
+        if(recentList.isEmpty()){
+            binding.recentSearchLayout.visibility = View.GONE
+        }
+
+        binding.recentChipGroup.removeAllViews()
+        for( tag in recentList){
+            binding.recentChipGroup.addView(Chip(this).apply {
+                text = tag
+                setOnClickListener {
+                    getSearchedProduct(text.toString())
+                    binding.searchEdt.setText(text.toString())
+                }
+            })
+        }
+        recentList.reverse()
+
+        val stringList = listOf("스팸", "호빵", "왕란", "콘푸로스트", "딸기")
+        for( tag in stringList){
+            binding.popularChipGroup.addView(Chip(this).apply {
+                text = tag
+                setOnClickListener {
+                    getSearchedProduct(text.toString())
+                    binding.searchEdt.setText(text.toString())
+                    if(recentList.contains(text.toString())){
+                        recentList.remove(text.toString())
+                        recentList.add(text.toString())
+                    }else{
+                        recentList.add(text.toString())
+                    }
+                    recentList.reverse()
+                    ContextUtil.setRecentSearch(mContext, recentList)
+                    recentList.reverse()
+
+                }
+            })
+        }
+
+
     }
 
     fun getCategoryList(){
@@ -174,6 +188,41 @@ class SearchActivity : BaseActivity() {
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
             }
         })
+    }
+
+    fun getSearchedProduct(item : String){
+        for(i in 1..mSmallCategoryList.size){
+            apiList.getRequestProducts(i).enqueue(object : Callback<BasicResponse>{
+                override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+                    if(response.isSuccessful){
+                        val br = response.body()!!
+                        mProductList.clear()
+                        mProductList.addAll(br.data.products)
+                        val ll = mProductList.filter { it.name == item }
+                        if(ll.isNotEmpty()){
+                            mProduct.clear()
+                            mProduct.addAll(ll)
+                            mDetailAdapter.notifyDataSetChanged()
+//                            Log.d("mProductList", mProduct.toString())
+                            binding.emptyLayout.visibility = View.GONE
+                            binding.searchListRecyclerView.visibility = View.VISIBLE
+                            return
+                        }else{
+//                                    if(i == mSmallCategoryList.size){
+//                                        Toast.makeText(mContext, "해당 상품이 존재하지 않습니다", Toast.LENGTH_SHORT).show()
+//                                    }
+                        }
+
+
+
+                    }
+                }
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+            })
+
+        }
     }
 
 }

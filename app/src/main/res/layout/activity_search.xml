@@ -88,6 +88,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="지금 가장 인기있는"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/popularChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchListRecyclerView"
