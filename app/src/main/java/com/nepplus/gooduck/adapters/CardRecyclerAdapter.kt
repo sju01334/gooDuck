@@ -54,8 +54,4 @@ class CardRecyclerAdapter(
         return mList.size
     }
 
-
-
-
-
 }

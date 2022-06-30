@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity() {
         setValues()
 
         getKeyhash()
-        getDeviceToken()
+//        getDeviceToken()
 
     }
 
