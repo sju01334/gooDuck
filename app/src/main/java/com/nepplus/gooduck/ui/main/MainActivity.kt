@@ -140,7 +140,7 @@ class MainActivity : BaseActivity(){
             return@setOnItemSelectedListener true
         }
 
-
+//      사이드 네비게이션 바를 위한 Toolbar 추가
         setSupportActionBar(binding.mainToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)  // 왼쪽 버튼 사용 여부 true
         supportActionBar!!.setHomeAsUpIndicator(drawable.three_line)
